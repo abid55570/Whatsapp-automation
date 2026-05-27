@@ -1,0 +1,50 @@
+{
+  "key": "book_appointment",
+  "name": "Book Appointment / Slot",
+  "description": "Customer wants to book a slot or appointment",
+  "default_reply_template": "Sure! Tap here to book your slot 📅: [Booking link]",
+  "category": "action",
+  "priority": 6,
+  "languages": {
+    "english": [
+      "book", "booking", "appointment", "slot", "book a slot", "book slot",
+      "book appointment", "available slots", "any slot", "free slot",
+      "reservation", "reserve", "schedule appointment", "schedule a slot",
+      "want to book", "need appointment", "i want to book", "can i book",
+      "available today", "available tomorrow"
+    ],
+    "hindi": [
+      "बुक", "बुकिंग", "अपॉइंटमेंट", "स्लॉट", "स्लॉट बुक", "स्लॉट खाली",
+      "स्लॉट चाहिए", "अपॉइंटमेंट लेना", "मिलना है", "मिलना चाहता",
+      "मुलाक़ात", "टाइम चाहिए"
+    ],
+    "hinglish": [
+      "book karna", "book karni", "booking karna", "appointment chahiye",
+      "appointment lena", "appointment lena hai", "slot chahiye",
+      "slot khali", "slot khali hai", "slot book", "slot book karna",
+      "milna hai", "milna chahta", "milne aana", "kab miloge", "kab milenge",
+      "kab milunga", "kab milungi", "time chahiye", "time lena",
+      "time book", "time fix", "time milega", "reserve karna",
+      "available slot", "khali slot"
+    ],
+    "urdu": [
+      "appointment chahiye", "milna hai", "waqt mil sakta", "slot mil sakta",
+      "book karna hai"
+    ],
+    "bhojpuri": [
+      "milal jai", "milan jaai", "appointment milal", "ketne baje milal",
+      "slot ba"
+    ],
+    "bengali": [
+      "booking", "appointment chai", "slot ache", "kobe paben", "kokhon dekha hobe",
+      "অ্যাপয়েন্টমেন্ট"
+    ]
+  },
+  "patterns": [
+    "(?i)(book|reserve|schedule).{0,15}(slot|appointment|time)",
+    "(?i)appointment\\s+(chahiye|lena|lijiye|please)",
+    "(?i)slot\\s+(chahiye|khali|book)",
+    "(?i)milna\\s+(hai|chahta|chahti)"
+  ],
+  "emojis": ["📅", "📆", "🗓️", "✅"]
+}

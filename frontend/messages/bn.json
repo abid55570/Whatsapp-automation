@@ -1,0 +1,68 @@
+{
+  "common": {
+    "save": "সেভ করুন",
+    "cancel": "বাতিল",
+    "continue": "এগিয়ে যান",
+    "back": "ফিরে যান",
+    "next": "পরবর্তী",
+    "loading": "লোড হচ্ছে...",
+    "delete": "মুছুন",
+    "edit": "এডিট",
+    "confirm": "নিশ্চিত",
+    "yes": "হ্যাঁ",
+    "no": "না"
+  },
+  "landing": {
+    "title": "WhatsApp অটোপাইলটে",
+    "subtitle": "ছোট ব্যবসার জন্য সস্তা WhatsApp অটোমেশন",
+    "feature_reply": "৬টি ভারতীয় ভাষায় অটো-রিপ্লাই",
+    "feature_orders": "WhatsApp-এ অর্ডার ও বুকিং পরিচালনা",
+    "feature_sheets": "Google Sheet এডিট করুন, বট সঙ্গে সঙ্গে আপডেট",
+    "cta": "১৪ দিনের ফ্রি ট্রায়াল শুরু করুন",
+    "trust": "ক্রেডিট কার্ড লাগবে না · যেকোনো সময় বাতিল",
+    "price_hint": "প্ল্যান ৳৩৯৯/মাস থেকে শুরু"
+  },
+  "lang_picker": {
+    "title": "আপনার ভাষা বেছে নিন",
+    "subtitle": "Choose your language · अपनी भाषा चुनें",
+    "continue": "এগিয়ে যান"
+  },
+  "signup": {
+    "title": "ফ্রি সাইন আপ করুন",
+    "trial_hint": "১৪ দিন ট্রায়াল · কোনো কার্ড লাগবে না",
+    "name_label": "আপনার নাম",
+    "name_placeholder": "Ramesh Kumar",
+    "phone_label": "WhatsApp নম্বর",
+    "phone_placeholder": "9876543210",
+    "phone_hint": "WhatsApp দিয়ে ভেরিফাই হবে — OTP টাইপ করতে হবে না",
+    "submit": "এগিয়ে যান",
+    "terms_notice": "এগিয়ে গেলে আপনি আমাদের শর্তাবলী এবং প্রাইভেসি পলিসি মেনে নিচ্ছেন।"
+  },
+  "verify": {
+    "title": "WhatsApp দিয়ে ভেরিফাই",
+    "instruction": "নিচের বোতামে ট্যাপ করুন — WhatsApp খুলবে, শুধু সেন্ড চাপুন।",
+    "open_whatsapp": "WhatsApp খুলুন ও ভেরিফাই করুন",
+    "waiting": "আপনার WhatsApp মেসেজের অপেক্ষায়...",
+    "expired": "ভেরিফিকেশন এক্সপায়ার হয়েছে",
+    "wrong_number": "ভুল নম্বর? আবার শুরু করুন",
+    "dev_mode": "Dev মোড",
+    "simulate": "Simulate Send"
+  },
+  "dashboard": {
+    "greeting": "নমস্কার, {name} 👋",
+    "needs_reply": "জবাব দরকার",
+    "auto_replied": "অটো-রিপ্লাই হয়েছে",
+    "auto_reply_rate": "ইনবাউন্ডের {pct}%"
+  },
+  "trial": {
+    "days_left": "ট্রায়ালে {days} দিন বাকি",
+    "days_left_one": "ট্রায়ালে ১ দিন বাকি",
+    "ending_today": "আজ ট্রায়াল শেষ",
+    "conversations_used": "{used}/{total} কথোপকথন ব্যবহৃত",
+    "upgrade": "আপগ্রেড"
+  },
+  "settings": {
+    "title": "সেটিংস",
+    "row_app_language": "অ্যাপের ভাষা"
+  }
+}

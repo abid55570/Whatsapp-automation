@@ -1,0 +1,46 @@
+{
+  "key": "contact_info",
+  "name": "Contact Information",
+  "description": "Customer asking for phone, email, or alternative contact",
+  "default_reply_template": "📞 Call us at [Your Phone] | ✉️ Email: [Your Email]",
+  "category": "inquiry",
+  "priority": 3,
+  "languages": {
+    "english": [
+      "contact", "contact number", "phone number", "phone", "call",
+      "call you", "give me number", "share number", "your number",
+      "talk to you", "talk to someone", "speak to", "email", "email id",
+      "your email", "mail id", "alternate contact", "customer care",
+      "support number", "helpline"
+    ],
+    "hindi": [
+      "नंबर", "फोन नंबर", "कॉन्टैक्ट", "फोन", "बात करनी है",
+      "बात करना है", "ईमेल", "हेल्पलाइन"
+    ],
+    "hinglish": [
+      "number", "phone number", "phone no", "phone no.", "contact number",
+      "contact no", "aap ka number", "aapka number", "tumhara number",
+      "number btao", "number share karo", "phone btao", "call kar sakta",
+      "call kar sakti", "baat karni hai", "baat karna hai", "baat karunga",
+      "email", "email id", "mail id", "support number", "helpline",
+      "customer care", "care number"
+    ],
+    "urdu": [
+      "number kya hai", "phone number", "baat karni hai", "email",
+      "rabta number"
+    ],
+    "bhojpuri": [
+      "number ka ha", "phone number", "baat karke", "phone number ba"
+    ],
+    "bengali": [
+      "phone number ki", "number ki", "phone koto", "যোগাযোগ",
+      "phone debe", "email id"
+    ]
+  },
+  "patterns": [
+    "(?i)(contact|phone|call)\\s+(number|no)",
+    "(?i)(share|btao|bhejo).*number",
+    "(?i)baat\\s+kar(ni|na)\\s+hai"
+  ],
+  "emojis": ["📞", "📱", "✉️", "📧"]
+}

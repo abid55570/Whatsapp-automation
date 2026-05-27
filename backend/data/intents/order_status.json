@@ -1,0 +1,47 @@
+{
+  "key": "order_status",
+  "name": "Order Status",
+  "description": "Customer asking about their order status",
+  "default_reply_template": "Please share your order number and I'll check the status for you. 📦",
+  "category": "inquiry",
+  "priority": 6,
+  "languages": {
+    "english": [
+      "order status", "where is my order", "order kahan", "track order",
+      "order tracking", "my order", "order update", "where's my order",
+      "order delivery", "when will i get", "when will it come",
+      "order received", "order placed", "shipped or not", "is it shipped",
+      "package status", "delivery status", "track my order"
+    ],
+    "hindi": [
+      "ऑर्डर", "ऑर्डर कहां", "ऑर्डर का स्टेटस", "मेरा ऑर्डर", "ऑर्डर ट्रैक",
+      "कब आएगा ऑर्डर", "ऑर्डर डिलीवरी", "कहां पहुंचा ऑर्डर"
+    ],
+    "hinglish": [
+      "order kaha", "order kahan", "order kaha hai", "order kahan hai",
+      "mera order", "mera order kaha", "order update", "order ka status",
+      "order status", "order ka kya hua", "order pohcha", "order milega kab",
+      "order kab milega", "order kab aayega", "order track", "track karo",
+      "kaha tak pohcha", "ship hua kya", "delivery kab", "order received",
+      "order place hua"
+    ],
+    "urdu": [
+      "order kahan hai", "order ka kya hua", "order kab milega",
+      "order pohcha", "tracking"
+    ],
+    "bhojpuri": [
+      "order kahaa ba", "order kab milal", "samaan kab aai", "samaan kahan"
+    ],
+    "bengali": [
+      "order kothay", "order er status", "order kobe ashbe", "tracking",
+      "অর্ডার কোথায়"
+    ]
+  },
+  "patterns": [
+    "(?i)(my\\s+)?order\\s+(status|update|tracking)",
+    "(?i)where.{0,10}order",
+    "(?i)order\\s+(kaha|kahan|kab\\s+milega)",
+    "(?i)track\\s+(my\\s+)?order"
+  ],
+  "emojis": ["📦", "🚚", "🛒", "📬"]
+}

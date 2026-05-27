@@ -1,0 +1,35 @@
+{
+  "key": "thanks",
+  "name": "Thank You",
+  "description": "Customer expresses gratitude",
+  "default_reply_template": "You're welcome! 😊 Always happy to help.",
+  "category": "social",
+  "priority": 1,
+  "languages": {
+    "english": [
+      "thanks", "thank you", "thank u", "thank u so much", "thanks a lot",
+      "thanks alot", "thx", "thnx", "ty", "tysm", "much appreciated",
+      "appreciate it", "appreciated", "cheers", "many thanks", "grateful"
+    ],
+    "hindi": [
+      "धन्यवाद", "शुक्रिया", "बहुत धन्यवाद", "बहुत शुक्रिया",
+      "आभार", "कृतज्ञ", "मेहरबानी"
+    ],
+    "hinglish": [
+      "dhanyawad", "dhanyavaad", "dhanyabad", "shukriya", "shukria",
+      "bahut shukriya", "bahut dhanyawad", "bahot dhanyawad", "thanks bhai",
+      "thanks yaar", "thx bhai", "aabhar", "kritagya", "meherbani", "thx bro"
+    ],
+    "urdu": [
+      "shukriya", "shukran", "bahut shukriya", "bohot shukriya", "meherbani"
+    ],
+    "bhojpuri": [
+      "dhanyabad", "dhanyabaad", "shukriya", "bahut nik lagal"
+    ],
+    "bengali": [
+      "ধন্যবাদ", "অনেক ধন্যবাদ", "dhonnobad", "dhonnyobad", "thanks"
+    ]
+  },
+  "patterns": [],
+  "emojis": ["🙏", "❤️", "🙌"]
+}

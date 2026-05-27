@@ -1,0 +1,44 @@
+{
+  "key": "ask_services",
+  "name": "Services Inquiry",
+  "description": "Customer asking about services offered (salon, clinic, etc.)",
+  "default_reply_template": "Here are our services ✨: [Services list link]",
+  "category": "inquiry",
+  "priority": 4,
+  "languages": {
+    "english": [
+      "services", "what services", "what do you offer", "service list",
+      "list of services", "available services", "what services do you have",
+      "do you offer services", "what's available", "service menu",
+      "treatments", "what treatments", "service details", "service info",
+      "package", "packages", "offerings"
+    ],
+    "hindi": [
+      "सेवा", "सेवाएं", "क्या सेवा", "सेवाओं की सूची", "क्या क्या करते हो",
+      "क्या क्या मिलता है", "सर्विसेस", "ट्रीटमेंट", "पैकेज"
+    ],
+    "hinglish": [
+      "services", "services kya", "services btao", "services bhejo",
+      "service list", "kya kya karte ho", "kya kya milta hai", "kya service",
+      "kaun si service", "kya kya offer", "treatment kya kya",
+      "package kya kya", "packages btao", "service available",
+      "kya kya available", "kya kya hota hai", "rates aur services"
+    ],
+    "urdu": [
+      "services kya", "khidmat", "khidmaat", "kya kya karte ho", "package"
+    ],
+    "bhojpuri": [
+      "ka ka karela", "ka ka hola", "ka service ba", "package ka"
+    ],
+    "bengali": [
+      "services", "ki ki kaj koren", "service list", "package",
+      "treatment ki ki", "পরিষেবা"
+    ]
+  },
+  "patterns": [
+    "(?i)what\\s+services",
+    "(?i)what\\s+do\\s+you\\s+(offer|do)",
+    "(?i)kya\\s+kya\\s+karte\\s+ho"
+  ],
+  "emojis": ["✨", "💇", "💆", "🧖"]
+}

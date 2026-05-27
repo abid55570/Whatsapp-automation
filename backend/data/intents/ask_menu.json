@@ -1,0 +1,46 @@
+{
+  "key": "ask_menu",
+  "name": "Menu Inquiry",
+  "description": "Customer asking for the food/product menu",
+  "default_reply_template": "Here's our menu 📋: [Menu link or PDF]",
+  "category": "inquiry",
+  "priority": 4,
+  "languages": {
+    "english": [
+      "menu", "menu please", "menu card", "what's on the menu", "see menu",
+      "show menu", "send menu", "food menu", "drinks menu", "items list",
+      "what do you have", "what's available", "available items", "specials",
+      "today's menu", "catalogue", "catalog"
+    ],
+    "hindi": [
+      "मेन्यू", "मेनू", "मेनू भेजो", "मेनू कार्ड", "खाने का मेन्यू",
+      "क्या क्या है", "क्या मिलेगा", "क्या उपलब्ध है", "सूची",
+      "आइटम लिस्ट", "स्पेशल"
+    ],
+    "hinglish": [
+      "menu", "menu btao", "menu bhejo", "menu bhej do", "menu kya hai",
+      "menu chahiye", "khaane ka menu", "khane ka menu", "food menu",
+      "kya kya milta", "kya kya milega", "kya kya hai", "kya available hai",
+      "available items", "items list", "list bhejo", "list btao",
+      "items kya kya", "aaj ka special", "aaj kya hai", "kitchen kya hai",
+      "katalog"
+    ],
+    "urdu": [
+      "menu kya hai", "khaane ka menu", "kya kya hai", "list bhejo",
+      "fehrist"
+    ],
+    "bhojpuri": [
+      "ka ka ba", "menu ka", "ka khae ke ba", "ka ka rakhal ba"
+    ],
+    "bengali": [
+      "menu", "ki ki ache", "khabar er list", "menu pathan", "মেনু",
+      "কি কি আছে"
+    ]
+  },
+  "patterns": [
+    "(?i)(send|show|see)\\s+menu",
+    "(?i)what.*(on|available).*menu",
+    "(?i)kya\\s+kya\\s+(hai|milta|milega)"
+  ],
+  "emojis": ["📋", "🍽️", "🍕", "🍔"]
+}

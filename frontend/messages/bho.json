@@ -1,0 +1,37 @@
+{
+  "common": {
+    "save": "सेव करीं",
+    "cancel": "रद्द करीं",
+    "continue": "आगे बढ़ीं",
+    "back": "वापस",
+    "next": "अगिला",
+    "loading": "लोड हो रहल बा...",
+    "yes": "हँ",
+    "no": "नाहीं"
+  },
+  "landing": {
+    "title": "WhatsApp ऑटोपायलट पर",
+    "subtitle": "छोट कारोबार खातिर सस्ता WhatsApp ऑटोमेशन",
+    "cta": "14 दिन फ्री ट्रायल शुरू करीं"
+  },
+  "lang_picker": {
+    "title": "आपन भाषा चुनीं",
+    "continue": "आगे बढ़ीं"
+  },
+  "signup": {
+    "title": "फ्री साइन अप करीं",
+    "name_label": "रउरा के नाम",
+    "phone_label": "WhatsApp नंबर",
+    "submit": "आगे बढ़ीं"
+  },
+  "verify": {
+    "title": "WhatsApp से वेरिफाई करीं",
+    "open_whatsapp": "WhatsApp खोलीं आ वेरिफाई करीं"
+  },
+  "dashboard": {
+    "greeting": "प्रणाम, {name} 👋"
+  },
+  "settings": {
+    "row_app_language": "ऐप के भाषा"
+  }
+}

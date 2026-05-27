@@ -1,0 +1,43 @@
+{
+  "common": {
+    "save": "محفوظ کریں",
+    "cancel": "منسوخ کریں",
+    "continue": "آگے بڑھیں",
+    "back": "واپس",
+    "next": "اگلا",
+    "loading": "لوڈ ہو رہا ہے...",
+    "delete": "حذف کریں",
+    "edit": "ایڈٹ",
+    "confirm": "تصدیق کریں",
+    "yes": "ہاں",
+    "no": "نہیں"
+  },
+  "landing": {
+    "title": "WhatsApp آٹو پائلٹ پر",
+    "subtitle": "چھوٹے کاروبار کے لیے سستا WhatsApp آٹومیشن",
+    "cta": "14 دن کا مفت ٹرائل شروع کریں",
+    "trust": "کریڈٹ کارڈ کی ضرورت نہیں"
+  },
+  "lang_picker": {
+    "title": "اپنی زبان منتخب کریں",
+    "continue": "آگے بڑھیں"
+  },
+  "signup": {
+    "title": "مفت سائن اپ کریں",
+    "name_label": "آپ کا نام",
+    "phone_label": "WhatsApp نمبر",
+    "submit": "آگے بڑھیں"
+  },
+  "verify": {
+    "title": "WhatsApp سے تصدیق کریں",
+    "open_whatsapp": "WhatsApp کھولیں اور تصدیق کریں",
+    "waiting": "آپ کے WhatsApp پیغام کا انتظار..."
+  },
+  "dashboard": {
+    "greeting": "السلام علیکم، {name} 👋"
+  },
+  "settings": {
+    "title": "ترتیبات",
+    "row_app_language": "ایپ کی زبان"
+  }
+}
