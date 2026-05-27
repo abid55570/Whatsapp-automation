@@ -1,0 +1,41 @@
+{
+  "key": "greeting",
+  "name": "Greeting",
+  "description": "Customer greets the business",
+  "default_reply_template": "Hi! Welcome 👋 How can I help you today?",
+  "category": "social",
+  "priority": 1,
+  "languages": {
+    "english": [
+      "hi", "hello", "hey", "hii", "hiii", "helo", "good morning",
+      "good afternoon", "good evening", "good night", "greetings", "howdy",
+      "yo", "sup", "what's up", "whats up"
+    ],
+    "hindi": [
+      "नमस्ते", "नमस्कार", "राम राम", "जय श्री राम", "जय हो", "सुप्रभात",
+      "शुभ संध्या", "शुभ रात्रि", "हाय", "हेलो", "प्रणाम"
+    ],
+    "hinglish": [
+      "namaste", "namaskar", "namastey", "namashkar", "ram ram", "ramram",
+      "jai shri ram", "jai ho", "jay ho", "pranam", "parnaam", "suprabhat",
+      "shubh sandhya", "haiii", "helloji", "hijii", "kya haal", "kaise ho",
+      "kese ho", "kaise hain aap", "kya ho raha", "kya chal raha"
+    ],
+    "urdu": [
+      "salaam", "salam", "salam alaikum", "assalam", "assalam alaikum",
+      "walaikum", "walaikum salam", "aadab", "adab", "aadaab"
+    ],
+    "bhojpuri": [
+      "pranam", "parnaam", "ram ram", "jay siyaram", "kaise bani",
+      "kaisan ba", "kaisn ho"
+    ],
+    "bengali": [
+      "নমস্কার", "নমস্তে", "নমষ্কার", "valo achen", "kemon achen", "kemon acho",
+      "salaam"
+    ]
+  },
+  "patterns": [
+    "(?i)^\\s*(hi|hello|hey|hii|namaste|salaam)\\b"
+  ],
+  "emojis": ["👋", "🙏", "🌹", "🤝"]
+}

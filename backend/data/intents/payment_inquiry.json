@@ -1,0 +1,46 @@
+{
+  "key": "payment_inquiry",
+  "name": "Payment Options",
+  "description": "Customer asking about payment methods accepted",
+  "default_reply_template": "We accept UPI, Cards, Net Banking and Cash on Delivery 💳",
+  "category": "inquiry",
+  "priority": 3,
+  "languages": {
+    "english": [
+      "payment", "payments", "payment methods", "how to pay", "payment options",
+      "do you accept upi", "upi", "card", "cash", "cod", "cash on delivery",
+      "online payment", "google pay", "phonepe", "paytm", "razorpay",
+      "credit card", "debit card", "net banking", "payment mode", "payment link",
+      "share payment link", "send payment link", "qr code"
+    ],
+    "hindi": [
+      "पेमेंट", "पेमेंट कैसे", "भुगतान", "नकद", "कैश", "ऑनलाइन पेमेंट",
+      "यूपीआई", "क्यूआर कोड", "कार्ड स्वीकार", "पेमेंट लिंक"
+    ],
+    "hinglish": [
+      "payment", "payment kaise", "payment kaise karna", "payment kaise karu",
+      "payment option", "kaise pay karu", "kaise pay karna", "upi chalega",
+      "upi le lo", "gpay", "google pay", "phonepe", "phone pe", "paytm",
+      "card chalega", "card lete ho", "cash on delivery", "cod available",
+      "cod hai", "nakad", "naqd", "online payment", "qr code", "qr scan",
+      "payment link bhejo", "link bhejo payment", "payment ki link"
+    ],
+    "urdu": [
+      "payment kaise", "naqd", "cash kese", "online payment", "upi chalega"
+    ],
+    "bhojpuri": [
+      "kaise payment hoi", "payment kaise kari", "cash chalee", "upi chale"
+    ],
+    "bengali": [
+      "payment kemne", "cash deoa jabe", "upi chole", "online payment",
+      "পেমেন্ট"
+    ]
+  },
+  "patterns": [
+    "(?i)payment\\s+(methods?|options?|mode)",
+    "(?i)how\\s+to\\s+pay",
+    "(?i)(cash\\s+on\\s+delivery|cod\\s+available)",
+    "(?i)payment\\s+(link|kaise|kese)"
+  ],
+  "emojis": ["💳", "💵", "🪙", "📲"]
+}

@@ -1,0 +1,46 @@
+{
+  "key": "delivery_inquiry",
+  "name": "Delivery Inquiry",
+  "description": "Customer asking about delivery time, charges, or availability",
+  "default_reply_template": "We deliver within 2-5 km in 30-45 minutes. Delivery charges: ₹40. 🚚",
+  "category": "inquiry",
+  "priority": 4,
+  "languages": {
+    "english": [
+      "delivery", "do you deliver", "home delivery", "free delivery",
+      "delivery charges", "delivery time", "how long delivery", "delivery available",
+      "deliver to", "deliver in", "delivery fee", "minimum order delivery",
+      "delivery boy", "fast delivery", "same day delivery", "shipping",
+      "shipping charges", "shipping time"
+    ],
+    "hindi": [
+      "डिलीवरी", "घर तक", "होम डिलीवरी", "फ्री डिलीवरी", "डिलीवरी चार्ज",
+      "कब तक मिलेगा", "कितनी देर में", "घर पर मिलेगा", "पहुंचाओगे"
+    ],
+    "hinglish": [
+      "delivery", "delivery karoge", "delivery available", "delivery kab",
+      "delivery kab tak", "delivery kitne der", "kitni der me",
+      "kitne der me", "ghar tak", "ghar par milega", "home delivery",
+      "free delivery", "delivery charge", "delivery fee", "delivery cost",
+      "fast delivery", "jaldi milega", "kal milega", "aaj milega",
+      "abhi milega", "pohcha doge", "pohchao", "send karoge", "bhejoge"
+    ],
+    "urdu": [
+      "delivery hogi", "kab tak milega", "ghar tak laoge", "delivery charge"
+    ],
+    "bhojpuri": [
+      "ghare aai", "kab aai", "kete der me", "delivery hoi ka"
+    ],
+    "bengali": [
+      "delivery hobe", "barite asbe", "kobe asbe", "delivery koto somoy",
+      "ডেলিভারি"
+    ]
+  },
+  "patterns": [
+    "(?i)home\\s+delivery",
+    "(?i)delivery\\s+(time|charge|fee|available)",
+    "(?i)ghar\\s+(tak|par|pe).{0,15}(milega|aayega)",
+    "(?i)kitn[ie]\\s+der"
+  ],
+  "emojis": ["🚚", "🛵", "📦", "🏍️"]
+}

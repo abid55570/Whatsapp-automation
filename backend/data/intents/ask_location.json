@@ -1,0 +1,49 @@
+{
+  "key": "ask_location",
+  "name": "Location / Address",
+  "description": "Customer asking where the business is located",
+  "default_reply_template": "We're located at [Your Address]. Google Maps: [Map Link] 📍",
+  "category": "inquiry",
+  "priority": 5,
+  "languages": {
+    "english": [
+      "location", "address", "where", "where are you", "where is",
+      "where is your shop", "where is the shop", "where is your store",
+      "where are you located", "directions", "map", "google map",
+      "google maps", "how to reach", "how to come", "pin location",
+      "share location", "address please", "exact location", "landmark"
+    ],
+    "hindi": [
+      "पता", "पता क्या", "पता बताओ", "कहां", "कहाँ", "कहां हो", "कहाँ हो",
+      "कहां है दुकान", "कहाँ है शॉप", "नक्शा", "लोकेशन", "एड्रेस",
+      "कैसे आऊं", "कैसे पहुंचूं"
+    ],
+    "hinglish": [
+      "address", "address kya", "address btao", "address bhejo", "address bhej",
+      "address de do", "location", "location bhejo", "location btao", "location share",
+      "share location", "location de do", "kaha", "kahan", "kaha ho", "kahaa ho",
+      "kaha hai dukan", "kaha hai shop", "kaha hai", "kahaan", "kese aaye",
+      "kese pohchu", "kaise pohche", "google map", "nakhsha", "naksha",
+      "directions", "direction btao", "landmark"
+    ],
+    "urdu": [
+      "pata", "pata kya hai", "kahan hai", "address kya hai", "kahaan ho",
+      "kese pohchu", "pata batao"
+    ],
+    "bhojpuri": [
+      "kaha ba", "kahaan ba", "pata ka", "pata batawa", "kese pahuche",
+      "kaha bate"
+    ],
+    "bengali": [
+      "thikana", "thikana ki", "kothay", "kothay ache", "address ki",
+      "address bolen", "location pathan", "ঠিকানা", "কোথায়"
+    ]
+  },
+  "patterns": [
+    "(?i)where\\s+(are|is)\\s+",
+    "(?i)how\\s+to\\s+(reach|come|get)",
+    "(?i)(address|location)\\s+(btao|bhejo|please|kya)",
+    "(?i)kaha\\s+(ho|hai|h)\\b"
+  ],
+  "emojis": ["📍", "🗺️", "🏠", "🚗"]
+}

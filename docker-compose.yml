@@ -1,0 +1,195 @@
+name: whatsapp-saas
+
+services:
+  # ============================================
+  # PostgreSQL - Main database
+  # ============================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: wa_postgres
+    restart: unless-stopped
+    environment:
+      # In production, REQUIRE these env vars (no insecure default).
+      # Local dev keeps the postgres default via .env file.
+      POSTGRES_USER: ${POSTGRES_USER:?POSTGRES_USER must be set in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set in .env}
+      POSTGRES_DB: ${POSTGRES_DB:?POSTGRES_DB must be set in .env}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - wa_network
+
+  # ============================================
+  # Redis - Cache + Celery broker
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    container_name: wa_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - wa_network
+
+  # ============================================
+  # Backend - FastAPI
+  # ============================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: wa_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - wa_network
+
+  # ============================================
+  # Celery Worker - Background jobs
+  # ============================================
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: wa_worker
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - backend
+      - redis
+    command: celery -A app.workers.celery_app worker --loglevel=info --concurrency=4
+    networks:
+      - wa_network
+
+  # ============================================
+  # Celery Beat - Scheduled tasks (reminders, sheet sync)
+  # ============================================
+  beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: wa_beat
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - backend
+      - redis
+    command: celery -A app.workers.celery_app beat --loglevel=info
+    networks:
+      - wa_network
+
+  # ============================================
+  # Frontend - Next.js PWA
+  # ============================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: wa_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    command: npm run dev
+    networks:
+      - wa_network
+
+  # ============================================
+  # Adminer - Database GUI
+  # ============================================
+  adminer:
+    image: adminer:latest
+    container_name: wa_adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DESIGN: pepa-linha-dark
+    depends_on:
+      - postgres
+    networks:
+      - wa_network
+
+  # ============================================
+  # Flower - Celery monitoring dashboard
+  # ============================================
+  flower:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: wa_flower
+    restart: unless-stopped
+    ports:
+      - "5555:5555"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - worker
+    command: celery -A app.workers.celery_app flower --port=5555
+    networks:
+      - wa_network
+
+  # ============================================
+  # Mailhog - Local email testing
+  # ============================================
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: wa_mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    networks:
+      - wa_network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  wa_network:
+    driver: bridge

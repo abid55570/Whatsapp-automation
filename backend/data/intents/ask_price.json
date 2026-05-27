@@ -1,0 +1,50 @@
+{
+  "key": "ask_price",
+  "name": "Price Inquiry",
+  "description": "Customer asking about prices, rates, or costs",
+  "default_reply_template": "Our prices are: [Please share your price list here]. Tap to see more 👇",
+  "category": "inquiry",
+  "priority": 5,
+  "languages": {
+    "english": [
+      "price", "prices", "cost", "costs", "rate", "rates", "charges",
+      "charge", "fee", "fees", "how much", "what's the price", "what is the price",
+      "what's the cost", "how much does it cost", "price list", "cost of",
+      "tell me the price", "rates please", "pricing", "tariff", "amount",
+      "total cost", "package price"
+    ],
+    "hindi": [
+      "कीमत", "दाम", "दाम क्या", "कीमत क्या", "रेट", "रेट क्या", "कितना",
+      "कितने", "कितने का", "कितना है", "क्या कीमत", "कीमत बताओ", "दाम बताओ",
+      "रेट बताओ", "मूल्य", "मूल्य क्या", "खर्चा", "खर्च", "पैसा", "कितने पैसे"
+    ],
+    "hinglish": [
+      "kitna", "kitne", "kitnaa", "kitne ka", "kitna ka", "kitna hai",
+      "kitne ki", "kya rate", "kya price", "rate kya", "rate kya hai",
+      "price kya", "price kya hai", "btao price", "btao rate", "rate btao",
+      "price btao", "daam", "daam kya", "daam btao", "mulya", "kimat",
+      "kimat kya", "kharcha", "kharch", "kharcha kitna", "paise",
+      "kitne paise", "kitna paisa", "ka rate", "ka price", "package price"
+    ],
+    "urdu": [
+      "qeemat", "qeemat kya", "qeemat kitni", "kitna paisa", "kitne paise",
+      "rate kya hai", "daam kya", "qeemat batao", "kya qeemat hai"
+    ],
+    "bhojpuri": [
+      "ka rate", "ka rate ba", "ketna", "ketne", "ketne ke", "ketna ke",
+      "kaisn rate", "rate ka ba", "daam ka", "ketna paisa"
+    ],
+    "bengali": [
+      "দাম", "দাম কত", "কত", "কত টাকা", "মূল্য", "মূল্য কত",
+      "kotota", "dam koto", "dam koto?", "dam", "rate koto", "koto taka"
+    ]
+  },
+  "patterns": [
+    "(?i)how\\s+much",
+    "(?i)what.*price",
+    "(?i)kya.*rate",
+    "(?i)kitne?\\s+ka\\b",
+    "(?i)(btao|bata|batao).*(price|rate|daam)"
+  ],
+  "emojis": ["💰", "💵", "💸", "💴", "💶", "🪙", "₹"]
+}

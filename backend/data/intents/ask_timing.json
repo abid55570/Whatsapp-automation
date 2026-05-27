@@ -1,0 +1,50 @@
+{
+  "key": "ask_timing",
+  "name": "Business Hours / Timing",
+  "description": "Customer asking about opening hours or business timings",
+  "default_reply_template": "We're open Mon–Sat, 10 AM – 9 PM. Sunday closed. ⏰",
+  "category": "inquiry",
+  "priority": 5,
+  "languages": {
+    "english": [
+      "timing", "timings", "time", "hours", "opening hours", "open time",
+      "closing time", "what time", "when do you open", "when do you close",
+      "open today", "are you open", "u open", "you open", "working hours",
+      "business hours", "shop hours", "open now", "still open", "closed",
+      "when open", "what's the timing", "open kab", "schedule"
+    ],
+    "hindi": [
+      "समय", "टाइम", "टाइमिंग", "कब खुलता", "कब खुलते", "कब बंद होता",
+      "कब बंद होते", "खुले हो", "खुली है", "खुला है", "आज खुले हो",
+      "बंद है", "क्या समय है", "कितने बजे खुलते"
+    ],
+    "hinglish": [
+      "timing kya", "timing kya hai", "timing batao", "time kya",
+      "time batao", "kab khulta", "kab khulte ho", "kab band hota",
+      "kab band karte", "khule ho", "khuli hai", "khula hai", "aaj khule ho",
+      "band hai", "kaun se time", "kitne baje khulta", "kitne baje band",
+      "open kab tak", "kab tak open", "abhi open", "open hai abhi",
+      "schedule kya hai", "ghante", "ghanton", "ghante tak"
+    ],
+    "urdu": [
+      "waqt kya", "waqt batao", "kab khulta hai", "kab band hota",
+      "khule ho", "kitne baje", "ghante kya"
+    ],
+    "bhojpuri": [
+      "kab khulela", "kab band hola", "kethe baje", "khule ba",
+      "ketna baje", "kahe khulela"
+    ],
+    "bengali": [
+      "kokhon khole", "kokhon khulben", "kokhon bondho", "somoy ki",
+      "khola ache", "bondho ache", "সময়", "কখন খোলে"
+    ]
+  },
+  "patterns": [
+    "(?i)what\\s+time",
+    "(?i)when\\s+do\\s+you\\s+(open|close)",
+    "(?i)(open|opening|closing)\\s+hours?",
+    "(?i)kab\\s+(khulta|band|tak)",
+    "(?i)kitne\\s+baje"
+  ],
+  "emojis": ["⏰", "🕐", "🕒", "🕘", "📅"]
+}
