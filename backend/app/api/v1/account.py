@@ -191,7 +191,7 @@ async def export_my_data(
         )
         zf.writestr(
             "README.txt",
-            "WhatsApp Auto — your data export\n"
+            "Whatly — your data export\n"
             f"Exported at: {datetime.now(timezone.utc).isoformat()}\n\n"
             "Files:\n"
             "- user.json: your account profile\n"

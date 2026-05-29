@@ -20,7 +20,6 @@ You spend ~120 hrs coding/testing before launch. Opportunity cost = whatever sal
 |---|---|
 | VPS 2GB/2CPU/40GB SSD | ₹420 (Hetzner €4.5) |
 | Backup (snapshots) | ₹85 |
-| Email (Resend 100 free) | ₹0 |
 | Domain renewal pro-rata | ₹70 |
 | Razorpay test mode | ₹0 |
 | Anthropic API (only when AI users) | ₹0 (no paying AI users yet) |

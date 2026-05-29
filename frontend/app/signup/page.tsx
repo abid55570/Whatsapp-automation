@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FlaskConical } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,6 +10,14 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { apiErrorMessage } from "@/lib/api";
 import { useStartVerification } from "@/lib/queries";
+
+// Generate a unique-ish test phone number every page mount so multiple test
+// signups in the same dev session don't collide.
+const TEST_NAME = "Test Owner";
+function genTestPhone() {
+  const n = Math.floor(1000000 + Math.random() * 8999999);  // 7 digits
+  return `9${String(n).padStart(9, "0").slice(0, 9)}`;
+}
 
 export default function SignupPage() {
   const router = useRouter();
@@ -90,6 +98,26 @@ export default function SignupPage() {
             <ArrowRight className="h-5 w-5" />
           </Button>
         </form>
+
+        {process.env.NODE_ENV !== "production" && (
+          <button
+            type="button"
+            onClick={() => {
+              setFullName(TEST_NAME);
+              setPhone(genTestPhone());
+              setTimeout(() => {
+                const form = document.querySelector("form");
+                form?.dispatchEvent(
+                  new Event("submit", { cancelable: true, bubbles: true }),
+                );
+              }, 100);
+            }}
+            className="mt-4 w-full flex items-center justify-center gap-2 border-2 border-dashed border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold px-4 py-2.5 rounded-xl text-sm min-h-[44px]"
+          >
+            <FlaskConical className="h-4 w-4" />
+            Dev: signup with random test phone (no Meta needed)
+          </button>
+        )}
 
         <p className="text-xs text-center text-slate-500 mt-8">
           By continuing, you agree to our{" "}

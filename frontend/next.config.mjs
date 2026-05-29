@@ -16,6 +16,17 @@ const nextConfig = {
       "next-intl",
     ],
   },
+  // Proxy API calls to the backend server-side. The browser hits
+  // /api/* on the SAME origin it loaded (localhost / LAN IP / tunnel),
+  // and Next forwards to the backend over the internal docker network.
+  // → no CORS, no hardcoded :8000, works from any device / tunnel.
+  async rewrites() {
+    const backend = process.env.BACKEND_INTERNAL_URL || "http://backend:8000";
+    return [
+      { source: "/api/:path*", destination: `${backend}/api/:path*` },
+      { source: "/health", destination: `${backend}/health` },
+    ];
+  },
   // Tighten security headers globally
   async headers() {
     return [

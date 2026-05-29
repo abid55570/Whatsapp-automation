@@ -18,7 +18,7 @@ class Settings(BaseSettings):
 
     # ---------- Application ----------
     APP_ENV: Literal["development", "staging", "production"] = "development"
-    APP_NAME: str = "WhatsApp Business Automation"
+    APP_NAME: str = "Whatly"
     APP_URL: str = "http://localhost:3000"
     API_URL: str = "http://localhost:8000"
 
@@ -79,10 +79,6 @@ class Settings(BaseSettings):
     # ---------- Google Sheets ----------
     GOOGLE_SHEETS_CREDENTIALS_PATH: str = "./credentials/google-service-account.json"
 
-    # ---------- Email ----------
-    RESEND_API_KEY: str = ""
-    EMAIL_FROM: str = "noreply@example.com"
-
     # ---------- SMS / OTP (fallback only, optional) ----------
     MSG91_AUTH_KEY: str = ""
     MSG91_SENDER_ID: str = ""
@@ -127,13 +123,6 @@ class Settings(BaseSettings):
     R2_BUCKET: str = "whatsapp-auto-invoices"
     R2_PUBLIC_BASE: str = ""        # https://invoices.yourdomain.com (custom domain)
     INVOICE_SIGNED_URL_TTL_DAYS: int = 7
-
-    # ---------- SMTP (CA monthly email — falls back to mailhog in dev) ----------
-    SMTP_HOST: str = ""
-    SMTP_PORT: int = 0
-    SMTP_USER: str = ""
-    SMTP_PASSWORD: str = ""
-    SMTP_USE_TLS: bool = False
 
     # ---------- e-invoice (IRP — V3) ----------
     EINVOICE_USERNAME: str = ""

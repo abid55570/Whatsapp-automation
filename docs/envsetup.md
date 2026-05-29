@@ -113,14 +113,12 @@ Temporary token expires in 24h. Generate System User token (60-day) or permanent
 7. Copy the service account email (looks like `sheets-sync@xxx.iam.gserviceaccount.com`)
 8. **Tell every customer**: "Share your Google Sheet with `sheets-sync@xxx.iam.gserviceaccount.com` as Viewer" — bot can read.
 
-## 9. Resend (transactional email — invoices, signup) — OPTIONAL
+## 9. Email — NOT USED
 
-1. https://resend.com → Sign up
-2. API Keys → Create → `RESEND_API_KEY=re_xxx`
-3. Domains → Add `yourdomain.com` → set DNS records (DKIM/SPF)
-4. `EMAIL_FROM=hello@yourdomain.com`
-
-Skip in dev — MailHog catches mails locally on http://localhost:8025
+Whatly sends zero emails. All notifications (signup verification, orders,
+invoices, status updates) go via WhatsApp. Owners download GST filing packs
+directly from the dashboard and forward to their CA on WhatsApp/their own
+email client. No SMTP / Resend / SES setup needed.
 
 ## 10. MSG91 / Fast2SMS (SMS fallback) — OPTIONAL
 
@@ -194,32 +192,7 @@ Required only when an owner crosses ₹5 cr annual turnover.
 
 Leave blank to disable — app handles gracefully.
 
-## 15c. SMTP (monthly CA email) — RECOMMENDED for Tax Pack
-
-For sending monthly GST filing packs to owners' CAs.
-
-### Option A — Resend (easiest)
-```
-SMTP_HOST=smtp.resend.com
-SMTP_PORT=587
-SMTP_USER=resend
-SMTP_PASSWORD=<resend-api-key>
-SMTP_USE_TLS=true
-```
-
-### Option B — AWS SES Mumbai
-```
-SMTP_HOST=email-smtp.ap-south-1.amazonaws.com
-SMTP_PORT=587
-SMTP_USER=<ses-username>
-SMTP_PASSWORD=<ses-password>
-SMTP_USE_TLS=true
-```
-
-### Dev/local
-Leave empty — worker falls back to MailHog (`smtp:1025`). View at http://localhost:8025.
-
-## 15d. Tax Pack Razorpay plan — OPTIONAL
+## 15c. Tax Pack Razorpay plan — OPTIONAL
 
 To bill ₹299/mo for Tax Pack via Razorpay:
 1. Razorpay → Plans → Create → name "Tax Pack", monthly, ₹299

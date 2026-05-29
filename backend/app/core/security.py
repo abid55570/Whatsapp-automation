@@ -3,12 +3,20 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 from uuid import UUID
 
+import bcrypt
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 
 from app.core.config import settings
 
-_pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# bcrypt only hashes the first 72 BYTES of input and (since 4.1) raises if
+# given more. OTP codes are tiny, but truncate defensively so any caller is
+# safe. We call bcrypt directly rather than via passlib — passlib 1.7.4 is
+# unmaintained and its backend self-check breaks against bcrypt >= 5.0.
+_BCRYPT_MAX_BYTES = 72
+
+
+def _to_bcrypt_bytes(plaintext: str) -> bytes:
+    return plaintext.encode("utf-8")[:_BCRYPT_MAX_BYTES]
 
 
 # ============================================================
@@ -57,13 +65,13 @@ def decode_access_token(token: str) -> dict[str, Any] | None:
 
 
 def hash_secret(plaintext: str) -> str:
-    """Hash a secret (OTP code, password) with bcrypt."""
-    return _pwd_context.hash(plaintext)
+    """Hash a secret (OTP code, password) with bcrypt. Returns a $2b$ hash."""
+    return bcrypt.hashpw(_to_bcrypt_bytes(plaintext), bcrypt.gensalt()).decode("utf-8")
 
 
 def verify_secret(plaintext: str, hashed: str) -> bool:
-    """Verify a plaintext secret against its hash."""
+    """Verify a plaintext secret against its bcrypt hash. False on any error."""
     try:
-        return _pwd_context.verify(plaintext, hashed)
-    except Exception:
+        return bcrypt.checkpw(_to_bcrypt_bytes(plaintext), hashed.encode("utf-8"))
+    except (ValueError, TypeError):
         return False
