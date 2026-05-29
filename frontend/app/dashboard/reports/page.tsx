@@ -324,7 +324,7 @@ export default function ReportsPage() {
           <Info className="h-4 w-4 text-slate-500 flex-shrink-0 mt-0.5" />
           <div className="text-xs text-slate-600">
             <span className="font-semibold">Disclaimer:</span> Verify all
-            figures with your CA before filing. WhatsApp Auto auto-computes from
+            figures with your CA before filing. Whatly auto-computes from
             issued invoices and recorded purchases — it is not a substitute for
             professional tax advice.
           </div>

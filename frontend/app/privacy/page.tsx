@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Privacy Policy",
   description:
-    "Privacy Policy for WhatsApp Auto — DPDP-compliant data handling for Indian small businesses.",
+    "Privacy Policy for Whatly — DPDP-compliant data handling for Indian small businesses.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -11,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout title="Privacy Policy" lastUpdated="20 May 2026">
       <Section title="1. Who we are">
-        WhatsApp Auto ("we", "us") is operated from Bangalore, India. We
+        Whatly ("we", "us") is operated from Bangalore, India. We
         process personal data in accordance with the{" "}
         <strong>Digital Personal Data Protection Act, 2023 (DPDP)</strong>{" "}
         and applicable Indian law.
@@ -174,7 +174,7 @@ function LegalLayout({
             <span className="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center">
               💬
             </span>
-            <span className="font-bold text-slate-900">WhatsApp Auto</span>
+            <span className="font-bold text-slate-900">Whatly</span>
           </Link>
           <Link
             href="/"

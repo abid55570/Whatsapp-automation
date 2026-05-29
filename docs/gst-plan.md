@@ -26,7 +26,6 @@
 | Purchase register (B2B inputs) | | ✓ | |
 | ITR-4 P&L summary | | | ✓ |
 | e-invoice (IRN) for >₹5cr turnover | | | ✓ |
-| Monthly CA email automation | | | ✓ |
 
 ## Indian GST primer (foundational)
 
@@ -216,7 +215,7 @@ RAZORPAY_PLAN_ID_TAX_ADDON=plan_xxxxx
 | 1 | DB migration, models, calc, validation, invoice number, schemas, 20+ tests | 40 |
 | 2 | PDF (WeasyPrint), R2 storage, API endpoints, WA share, frontend invoice list/detail | 40 |
 | 3 | GSTR-1 JSON, GSTR-3B summary, sales register xlsx, purchase invoices, Reports UI | 40 |
-| 4 | ITR-4 P&L, e-invoice IRN, monthly CA email, HSN auto-suggest | 40 |
+| 4 | ITR-4 P&L, e-invoice IRN, HSN auto-suggest | 40 |
 | 5 | 60+ tests, polish, soft-launch to 5 users | 30 |
 | **Total** | | **190 hrs ≈ 5 weeks** |
 

@@ -47,13 +47,6 @@ celery_app.conf.beat_schedule = {
         "task": "account.cleanup_expired_otps",
         "schedule": 86400.0,
     },
-    "monthly-ca-email-daily-check": {
-        # Runs every day. The task itself only does work on day 1 of the month
-        # by sending last month's pack. Daily run keeps it idempotent if the
-        # day-1 firing is missed (worker restart, etc.).
-        "task": "gst.send_monthly_ca_email",
-        "schedule": 86400.0,
-    },
 }
 
 
@@ -66,6 +59,5 @@ def health_check() -> str:
 # Import task modules so they register with the celery_app instance
 from app.workers.tasks import account as _account_tasks  # noqa: E402, F401
 from app.workers.tasks import billing as _billing_tasks  # noqa: E402, F401
-from app.workers.tasks import gst as _gst_tasks  # noqa: E402, F401
 from app.workers.tasks import sheets as _sheets_tasks  # noqa: E402, F401
 from app.workers.tasks import whatsapp as _whatsapp_tasks  # noqa: E402, F401

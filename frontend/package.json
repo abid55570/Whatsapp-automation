@@ -29,7 +29,8 @@
     "zod": "^3.23.8",
     "@hookform/resolvers": "^3.9.1",
     "sonner": "^1.7.0",
-    "date-fns": "^4.1.0"
+    "date-fns": "^4.1.0",
+    "next-intl": "^3.26.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

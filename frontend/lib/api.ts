@@ -4,9 +4,13 @@ import axios, { type AxiosError } from "axios";
 import { useAuthStore } from "@/stores/auth";
 
 export const api = axios.create({
-  baseURL:
-    process.env.NEXT_PUBLIC_API_URL ||
-    (typeof window !== "undefined" ? "http://localhost:8000" : ""),
+  // Default: same-origin ("") — calls go to /api/v1/... on whatever host the
+  // browser loaded (localhost, LAN IP, or a public tunnel). next.config.mjs
+  // rewrites /api/* to the backend server-side, so the browser never needs to
+  // reach :8000 directly. This is what makes phone / tunnel testing work and
+  // removes the need for CORS. Set NEXT_PUBLIC_API_URL only to force an
+  // absolute backend origin (e.g. a separately-hosted prod API).
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "",
   headers: { "Content-Type": "application/json" },
   timeout: 30_000,
 });

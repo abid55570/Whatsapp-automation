@@ -20,7 +20,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title=settings.APP_NAME,
-    description="Affordable WhatsApp Automation Platform for Small Businesses",
+    description="Whatly — Affordable WhatsApp Automation Platform for Small Businesses",
     version="0.1.0",
     default_response_class=ORJSONResponse,
     lifespan=lifespan,

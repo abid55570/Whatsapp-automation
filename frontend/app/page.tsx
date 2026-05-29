@@ -11,6 +11,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import { getTranslations } from "next-intl/server";
+
+import { DemoReels } from "@/components/DemoReels";
+import { HookReel } from "@/components/HookReel";
 import { LangSwitcher } from "@/components/LangSwitcher";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://yourdomain.com";
@@ -21,7 +25,7 @@ const STRUCTURED_DATA = {
     {
       "@type": "Organization",
       "@id": `${SITE_URL}/#org`,
-      name: "WhatsApp Auto",
+      name: "Whatly",
       url: SITE_URL,
       logo: `${SITE_URL}/icon-512.png`,
       sameAs: [],
@@ -33,7 +37,7 @@ const STRUCTURED_DATA = {
     },
     {
       "@type": "SoftwareApplication",
-      name: "WhatsApp Auto",
+      name: "Whatly",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web, iOS, Android (PWA)",
       offers: [
@@ -103,7 +107,8 @@ const STRUCTURED_DATA = {
   ],
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const t = await getTranslations("landing");
   return (
     <main className="min-h-screen bg-white">
       <script
@@ -116,11 +121,15 @@ export default function HomePage() {
       <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <span className="w-9 h-9 rounded-xl bg-brand-500 text-white flex items-center justify-center text-lg shadow-soft">
-              💬
+            <span
+              className="w-9 h-9 rounded-xl text-white flex items-center justify-center text-lg font-black shadow-soft"
+              style={{ background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)" }}
+              aria-label="Whatly logo"
+            >
+              W
             </span>
             <span className="font-bold text-slate-900 hidden sm:inline">
-              WhatsApp Auto
+              Whatly
             </span>
           </Link>
           <div className="flex items-center gap-2">
@@ -129,13 +138,13 @@ export default function HomePage() {
               href="/signup"
               className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-slate-700 hover:text-slate-900 px-3 py-2 min-h-[44px]"
             >
-              Log in
+              {t("log_in")}
             </Link>
             <Link
               href="/language?next=/signup"
               className="inline-flex items-center gap-1 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-4 py-2.5 min-h-[44px] rounded-lg transition active:scale-95"
             >
-              Start free
+              {t("start_free")}
             </Link>
           </div>
         </div>
@@ -148,17 +157,16 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-1.5 bg-brand-100 text-brand-700 text-xs font-semibold px-3 py-1 rounded-full mb-6">
             <Sparkles className="h-3 w-3" />
-            Built for Indian shop owners
+            {t("built_for")}
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-4 font-display leading-tight">
-            Make WhatsApp work for your shop —{" "}
-            <span className="text-brand-600">automatically</span>
+            {t("hero_title_a")}{" "}
+            <span className="text-brand-600">{t("hero_title_b")}</span>
           </h1>
           <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-            Auto-reply to customers, take orders, schedule pickups. In Hindi,
-            English, Hinglish, Bengali, Urdu, Bhojpuri.{" "}
+            {t("hero_subtitle")}{" "}
             <span className="font-semibold text-slate-900">
-              Starting at ₹399/month.
+              {t("hero_price_inline")}
             </span>
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-6">
@@ -166,75 +174,31 @@ export default function HomePage() {
               href="/language?next=/signup"
               className="btn-primary w-full sm:w-auto text-lg px-8"
             >
-              Start 14-Day Free Trial
+              {t("cta")}
             </Link>
             <Link
               href="#pricing"
               className="btn-secondary w-full sm:w-auto text-lg px-8"
             >
-              See pricing
+              {t("see_pricing")}
             </Link>
           </div>
           <p className="text-xs text-slate-500">
-            No credit card · No setup fees · Cancel anytime
+            {t("no_card_cancel")}
           </p>
         </div>
+      </section>
 
-        {/* WhatsApp mockup preview */}
-        <div className="max-w-md mx-auto mt-12">
-          <div className="bg-[#075E54] text-white rounded-2xl shadow-soft-lg overflow-hidden">
-            <div className="px-4 py-3 flex items-center gap-3 bg-[#075E54]">
-              <div className="w-9 h-9 rounded-full bg-white text-brand-600 flex items-center justify-center font-bold">
-                S
-              </div>
-              <div>
-                <div className="font-semibold text-sm">Sharma Kirana</div>
-                <div className="text-[10px] text-green-200">online</div>
-              </div>
-            </div>
-            <div className="bg-[#ECE5DD] p-3 space-y-2 min-h-[280px]">
-              <div className="flex justify-end">
-                <div className="bg-[#DCF8C6] rounded-lg px-3 py-1.5 text-sm text-slate-800 max-w-[75%]">
-                  kitne ka hai atta?
-                </div>
-              </div>
-              <div className="flex">
-                <div className="bg-white rounded-lg px-3 py-1.5 text-sm text-slate-800 max-w-[75%]">
-                  <div className="text-[10px] text-emerald-600 font-semibold mb-0.5">
-                    🤖 Auto-reply
-                  </div>
-                  Atta 5kg ₹250, 1kg ₹55. ✅ In stock!
-                </div>
-              </div>
-              <div className="flex justify-end">
-                <div className="bg-[#DCF8C6] rounded-lg px-3 py-1.5 text-sm text-slate-800 max-w-[75%]">
-                  2 atta, 1 toor dal bhejo
-                </div>
-              </div>
-              <div className="flex">
-                <div className="bg-white rounded-lg px-3 py-1.5 text-sm text-slate-800 max-w-[75%]">
-                  <div className="text-[10px] text-emerald-600 font-semibold mb-0.5">
-                    🤖 Auto-reply
-                  </div>
-                  📝 Order: ₹680 · Pickup by 5 PM. Reply YES to confirm.
-                </div>
-              </div>
-              <div className="flex justify-end">
-                <div className="bg-[#DCF8C6] rounded-lg px-3 py-1.5 text-sm text-slate-800 max-w-[75%]">
-                  haan
-                </div>
-              </div>
-              <div className="flex">
-                <div className="bg-white rounded-lg px-3 py-1.5 text-sm text-slate-800 max-w-[75%]">
-                  ✅ Order #1234 confirmed! 💵 Cash on pickup.
-                </div>
-              </div>
-            </div>
-          </div>
-          <p className="text-center text-xs text-slate-500 mt-3">
-            Real conversation. Real auto-reply. No agent needed.
-          </p>
-        </div>
+      {/* ============================================================ */}
+      {/* HOOK REEL — Without vs With Whatly                           */}
+      {/* ============================================================ */}
+      <HookReel />
+
+      {/* ============================================================ */}
+      {/* DEMO REELS — 6 industries rotate (chat follows the locale)   */}
+      {/* ============================================================ */}
+      <section className="px-4 py-12 sm:py-16 bg-white">
+        <DemoReels />
       </section>
 
       {/* ============================================================ */}
@@ -242,20 +206,20 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section className="px-4 py-16 max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-slate-900 text-center mb-2">
-          Built for every small business
+          {t("uc_title")}
         </h2>
         <p className="text-slate-600 text-center mb-10">
-          One platform. Each business uses what they need.
+          {t("uc_sub")}
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <UseCaseCard emoji="🍕" title="Restaurant" lines={["Menu", "Orders", "Pickup"]} />
-          <UseCaseCard emoji="🛒" title="Kirana" lines={["Items list", "COD orders", "Pickup"]} />
-          <UseCaseCard emoji="💇" title="Salon" lines={["Services", "Bookings", "Reminders"]} />
-          <UseCaseCard emoji="🏥" title="Clinic" lines={["Hours", "Appointments", "FAQs"]} />
-          <UseCaseCard emoji="💪" title="Gym" lines={["Classes", "Membership", "Hours"]} />
-          <UseCaseCard emoji="📚" title="Coaching" lines={["Batches", "Fees", "Schedule"]} />
-          <UseCaseCard emoji="📦" title="D2C Brand" lines={["Catalog", "Orders", "Tracking"]} />
-          <UseCaseCard emoji="✨" title="Anything" lines={["Custom FAQs", "From Google Sheet"]} />
+          <UseCaseCard emoji="🍕" title={t("uc_restaurant")} lines={["Menu", "Orders", "Pickup"]} />
+          <UseCaseCard emoji="🛒" title={t("uc_kirana")} lines={["Items list", "COD orders", "Pickup"]} />
+          <UseCaseCard emoji="💇" title={t("uc_salon")} lines={["Services", "Bookings", "Reminders"]} />
+          <UseCaseCard emoji="🏥" title={t("uc_clinic")} lines={["Hours", "Appointments", "FAQs"]} />
+          <UseCaseCard emoji="💪" title={t("uc_gym")} lines={["Classes", "Membership", "Hours"]} />
+          <UseCaseCard emoji="📚" title={t("uc_coaching")} lines={["Batches", "Fees", "Schedule"]} />
+          <UseCaseCard emoji="📦" title={t("uc_d2c")} lines={["Catalog", "Orders", "Tracking"]} />
+          <UseCaseCard emoji="✨" title={t("uc_anything")} lines={["Custom FAQs", "From Google Sheet"]} />
         </div>
       </section>
 
@@ -265,51 +229,51 @@ export default function HomePage() {
       <section className="bg-slate-50 px-4 py-16">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-slate-900 text-center mb-2">
-            Everything you need to run on WhatsApp
+            {t("feat_title")}
           </h2>
           <p className="text-slate-600 text-center mb-10">
-            No coding. No setup fees. No surprises.
+            {t("feat_sub")}
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <Feature
               icon={Zap}
-              title="Auto-reply in 6 languages"
-              body="English, Hindi, Hinglish, Bengali, Urdu, Bhojpuri. Detects what your customer wrote, replies in same language."
+              title={t("feat_reply_title")}
+              body={t("feat_reply_body")}
               bg="bg-amber-100"
               color="text-amber-600"
             />
             <Feature
               icon={FileSpreadsheet}
-              title="Edit Google Sheet → bot updates"
-              body="No admin panels. Add new menu items or FAQs in your Sheet, bot syncs every 15 min."
+              title={t("feat_sheets_title")}
+              body={t("feat_sheets_body")}
               bg="bg-green-100"
               color="text-green-600"
             />
             <Feature
               icon={Package}
-              title="Orders + Pickup"
-              body="Customer says '2 atta'. Bot parses, calculates total, asks pickup time. Cash or UPI."
+              title={t("feat_orders_title")}
+              body={t("feat_orders_body")}
               bg="bg-indigo-100"
               color="text-indigo-600"
             />
             <Feature
               icon={MessageCircle}
-              title="Real-time inbox"
-              body="See all customer messages on your phone. Reply manually when bot doesn't know."
+              title={t("feat_inbox_title")}
+              body={t("feat_inbox_body")}
               bg="bg-brand-100"
               color="text-brand-600"
             />
             <Feature
               icon={Languages}
-              title="Customer-language replies"
-              body="Customer wrote Hindi? Replies in Hindi. Wrote Hinglish? Replies in Hinglish. Automatic."
+              title={t("feat_lang_title")}
+              body={t("feat_lang_body")}
               bg="bg-pink-100"
               color="text-pink-600"
             />
             <Feature
               icon={Bot}
-              title="AI add-on (optional)"
-              body="₹699/mo. Smart fallback when no FAQ matches. Auto-translates English replies to customer's language."
+              title={t("feat_ai_title")}
+              body={t("feat_ai_body")}
               bg="bg-purple-100"
               color="text-purple-600"
             />
@@ -322,33 +286,17 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section className="px-4 py-16 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-slate-900 text-center mb-2">
-          Live in 10 minutes
+          {t("how_title")}
         </h2>
         <p className="text-slate-600 text-center mb-10">
-          From signup to first auto-reply. No tech skills needed.
+          {t("how_sub")}
         </p>
         <div className="space-y-3">
           {[
-            {
-              n: 1,
-              title: "Sign up free",
-              body: "Phone number → verify via WhatsApp → 14-day trial starts. No credit card.",
-            },
-            {
-              n: 2,
-              title: "Connect WhatsApp Business",
-              body: "One tap. Meta's official Embedded Signup. Your data stays yours.",
-            },
-            {
-              n: 3,
-              title: "Pick auto-replies",
-              body: "12 ready templates: price, timings, location, menu, etc. Edit the answers, done.",
-            },
-            {
-              n: 4,
-              title: "Customers get instant answers",
-              body: "Bot replies 24/7 in customer's language. You see everything in the inbox.",
-            },
+            { n: 1, title: t("step1_title"), body: t("step1_body") },
+            { n: 2, title: t("step2_title"), body: t("step2_body") },
+            { n: 3, title: t("step3_title"), body: t("step3_body") },
+            { n: 4, title: t("step4_title"), body: t("step4_body") },
           ].map((s) => (
             <div
               key={s.n}
@@ -372,13 +320,14 @@ export default function HomePage() {
       <section id="pricing" className="bg-slate-50 px-4 py-16">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-slate-900 text-center mb-2">
-            Honest pricing
+            {t("price_title")}
           </h2>
           <p className="text-slate-600 text-center mb-10">
-            Pay only what your shop uses. Cancel anytime.
+            {t("price_sub")}
           </p>
           <div className="grid md:grid-cols-3 gap-4">
             <PricingCard
+              ctaLabel={t("price_card_btn")}
               name="Starter"
               price={399}
               conv={1000}
@@ -391,6 +340,7 @@ export default function HomePage() {
               ]}
             />
             <PricingCard
+              ctaLabel={t("price_card_btn")}
               name="Growth"
               price={999}
               conv={3000}
@@ -405,6 +355,7 @@ export default function HomePage() {
               ]}
             />
             <PricingCard
+              ctaLabel={t("price_card_btn")}
               name="Pro"
               price={1999}
               conv={6000}
@@ -447,10 +398,10 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section className="px-4 py-12 max-w-5xl mx-auto">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-          <TrustStat number="6" label="Languages supported" />
-          <TrustStat number="₹399" label="Starts from / month" />
-          <TrustStat number="10 min" label="To go live" />
-          <TrustStat number="14-day" label="Free trial" />
+          <TrustStat number="6" label={t("trust_languages")} />
+          <TrustStat number="₹399" label={t("trust_starts")} />
+          <TrustStat number="10 min" label={t("trust_live")} />
+          <TrustStat number="14-day" label={t("trust_trial")} />
         </div>
       </section>
 
@@ -460,7 +411,7 @@ export default function HomePage() {
       <section className="bg-slate-50 px-4 py-16">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-slate-900 text-center mb-10">
-            Common questions
+            {t("faq_title")}
           </h2>
           <div className="space-y-3">
             <FAQ
@@ -504,21 +455,20 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section className="px-4 py-20 bg-gradient-to-br from-brand-500 to-emerald-600 text-white text-center">
         <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-          Stop typing the same answers
+          {t("final_title")}
         </h2>
         <p className="text-lg text-brand-50 mb-8 max-w-xl mx-auto">
-          Set up once. Sleep better. Your customers get instant replies — even
-          at 2 AM.
+          {t("final_sub")}
         </p>
         <Link
           href="/language?next=/signup"
           className="inline-flex items-center gap-2 bg-white text-brand-700 font-bold px-8 py-4 rounded-2xl shadow-lg text-lg hover:bg-brand-50 transition active:scale-[0.98]"
         >
           <Sparkles className="h-5 w-5" />
-          Start your 14-day free trial
+          {t("final_btn")}
         </Link>
         <p className="text-xs text-brand-100 mt-4">
-          No credit card · Plans from ₹399/mo
+          {t("final_card")}
         </p>
       </section>
 
@@ -530,46 +480,50 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <span className="w-8 h-8 rounded-xl bg-brand-500 text-white flex items-center justify-center text-sm">
-                  💬
+                <span
+                  className="w-8 h-8 rounded-xl text-white flex items-center justify-center text-sm font-black"
+                  style={{ background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)" }}
+                  aria-hidden
+                >
+                  W
                 </span>
-                <span className="font-bold text-white">WhatsApp Auto</span>
+                <span className="font-bold text-white">Whatly</span>
               </div>
               <p className="text-xs leading-relaxed">
                 Affordable WhatsApp automation for Indian small businesses.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-white text-sm mb-3">Product</h4>
+              <h4 className="font-semibold text-white text-sm mb-3">{t("footer_product")}</h4>
               <ul className="text-xs space-y-2">
                 <li>
                   <Link href="#pricing" className="hover:text-white">
-                    Pricing
+                    {t("footer_pricing")}
                   </Link>
                 </li>
                 <li>
                   <Link href="/signup" className="hover:text-white">
-                    Sign up
+                    {t("footer_signup")}
                   </Link>
                 </li>
                 <li>
                   <Link href="/signup" className="hover:text-white">
-                    Log in
+                    {t("footer_login")}
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-white text-sm mb-3">Legal</h4>
+              <h4 className="font-semibold text-white text-sm mb-3">{t("footer_legal")}</h4>
               <ul className="text-xs space-y-2">
                 <li>
                   <Link href="/terms" className="hover:text-white">
-                    Terms of Service
+                    {t("footer_terms")}
                   </Link>
                 </li>
                 <li>
                   <Link href="/privacy" className="hover:text-white">
-                    Privacy Policy
+                    {t("footer_privacy")}
                   </Link>
                 </li>
                 <li>
@@ -602,7 +556,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs">
-            <p>© 2026 WhatsApp Auto. All rights reserved.</p>
+            <p>© 2026 Whatly. All rights reserved.</p>
             <p className="flex items-center gap-1">
               <Shield className="h-3 w-3" />
               Powered by Meta WhatsApp Cloud API
@@ -669,12 +623,14 @@ function PricingCard({
   conv,
   features,
   recommended,
+  ctaLabel,
 }: {
   name: string;
   price: number;
   conv: number;
   features: string[];
   recommended?: boolean;
+  ctaLabel: string;
 }) {
   return (
     <div
@@ -714,7 +670,7 @@ function PricingCard({
             : "bg-slate-100 text-slate-900 hover:bg-slate-200"
         }`}
       >
-        Start free trial
+        {ctaLabel}
       </Link>
     </div>
   );

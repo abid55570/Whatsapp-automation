@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Page not found",
-  description: "404 — this page doesn't exist on WhatsApp Auto.",
+  description: "404 — this page doesn't exist on Whatly.",
   robots: { index: false, follow: false },
 };
 
