@@ -79,13 +79,18 @@ export default function BentoWorks() {
                   {card.title}
                 </span>
 
-                {/* hover veil */}
-                <div className="absolute inset-0 flex items-center justify-center bg-white/70 opacity-0 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-100">
+                {/* hover veil — surfaces the pain Whatly solves for this type */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/80 px-7 text-center opacity-0 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-100">
                   <span className="accent-gradient-animated rounded-full p-[1.5px]">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-sm text-slate-900">
-                      View —{" "}
-                      <span className="font-display-serif italic">{card.title}</span>
+                    <span className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-900">
+                      {card.title}
                     </span>
+                  </span>
+                  <p className="max-w-sm font-display-serif text-lg italic leading-snug text-slate-800 md:text-xl">
+                    “{card.fact}”
+                  </p>
+                  <span className="text-xs font-medium text-[#1faa59]">
+                    Whatly replies in seconds — so you never miss one ↓
                   </span>
                 </div>
               </div>

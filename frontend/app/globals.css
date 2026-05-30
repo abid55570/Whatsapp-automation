@@ -4,6 +4,144 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lenis smooth scroll (required structural styles) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Cheap GPU-composited "breathing" for the gradient backdrop (transform only,
+   no per-frame repaint). */
+@keyframes bg-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+.animate-bg-breathe {
+  animation: bg-breathe 9s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Flowing green "aurora" — large blurred blobs drifting via GPU transforms. */
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+@keyframes aurora-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(12%, 16%) scale(1.25);
+  }
+}
+@keyframes aurora-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-14%, -10%) scale(0.85);
+  }
+}
+@keyframes aurora-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(0.9);
+  }
+  50% {
+    transform: translate(10%, -14%) scale(1.2);
+  }
+}
+
+/* ---------- Magic cursor (sparkle trail) ---------- */
+:root {
+  --mouse-sparkles-glow-rgb: 37 211 102;
+}
+.mouse-sparkles-star {
+  position: fixed;
+  width: 1em;
+  height: 1em;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform, opacity;
+}
+.mouse-sparkles-glow-point {
+  position: fixed;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    circle,
+    rgb(var(--mouse-sparkles-glow-rgb) / 0.5),
+    transparent 70%
+  );
+}
+@keyframes fall-1 {
+  0% {
+    transform: translate(0px, 0px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(0.25);
+    opacity: 0;
+  }
+  5% {
+    transform: translate(10px, -10px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(25px, 200px) rotateX(180deg) rotateY(270deg) rotateZ(90deg) scale(1);
+    opacity: 0;
+  }
+}
+@keyframes fall-2 {
+  0% {
+    transform: translate(0px, 0px) rotateX(-20deg) rotateY(10deg) scale(0.25);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(-10px, -5px) rotateX(-20deg) rotateY(10deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-10px, 160px) rotateX(-90deg) rotateY(45deg) scale(0.25);
+    opacity: 0;
+  }
+}
+@keyframes fall-3 {
+  0% {
+    transform: translate(0px, 0px) rotateX(0deg) rotateY(45deg) scale(0.5);
+    opacity: 0;
+  }
+  15% {
+    transform: translate(7px, 5px) rotateX(0deg) rotateY(45deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(20px, 120px) rotateX(-180deg) rotateY(-90deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
 @layer base {
   html {
     -webkit-tap-highlight-color: transparent;

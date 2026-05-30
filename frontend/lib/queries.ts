@@ -652,7 +652,7 @@ async function _downloadFile(
   params?: Record<string, string>,
 ): Promise<void> {
   const resp = await api.get(path, { params, responseType: "blob" });
-  const blobType = resp.headers["content-type"] || "application/octet-stream";
+  const blobType = String(resp.headers["content-type"] ?? "application/octet-stream");
   const url = window.URL.createObjectURL(
     new Blob([resp.data], { type: blobType }),
   );

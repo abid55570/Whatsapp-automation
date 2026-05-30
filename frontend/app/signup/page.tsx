@@ -6,10 +6,17 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
+import { motion } from "framer-motion";
+
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import AuroraBackground from "@/components/ui/aurora-background";
+import { Component as MagicCursor } from "@/components/ui/magic-cursor";
+import { MouseFollowingEyes } from "@/components/ui/mouse-following-eyes";
 import { apiErrorMessage } from "@/lib/api";
 import { useStartVerification } from "@/lib/queries";
+
+const SERIF = "'Instrument Serif', serif";
 
 // Generate a unique-ish test phone number every page mount so multiple test
 // signups in the same dev session don't collide.
@@ -52,19 +59,48 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-brand-50 to-white p-4 flex flex-col items-center justify-center">
-      <div className="w-full max-w-sm">
-        <div className="text-center mb-8 animate-fade-in">
-          <div className="inline-flex w-16 h-16 rounded-2xl bg-brand-500 text-white text-3xl items-center justify-center mb-4 shadow-soft">
-            💬
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white p-4">
+      {/* Flowing green aurora + sparkle cursor */}
+      <AuroraBackground />
+      <MagicCursor colors={["252 254 255", "37 211 102", "52 217 124"]} />
+
+      {/* Home / logo top-left */}
+      <Link
+        href="/"
+        aria-label="Back to home"
+        className="group absolute left-5 top-5 z-20 flex items-center gap-2.5"
+      >
+        <span
+          className="inline-block h-8 w-8 rounded-full transition-transform duration-300 group-hover:rotate-12"
+          style={{ background: "linear-gradient(135deg,#25d366,#128c7e)" }}
+        />
+        <span
+          className="text-2xl leading-none tracking-tight text-slate-900"
+          style={{ fontFamily: SERIF }}
+        >
+          Whatly
+        </span>
+      </Link>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 w-full max-w-md rounded-3xl border border-white/50 bg-white/55 p-6 shadow-[0_30px_90px_-28px_rgba(16,140,126,0.4)] backdrop-blur-2xl sm:p-8"
+      >
+        <div className="mb-7 text-center">
+          <div className="mb-5 flex justify-center">
+            <MouseFollowingEyes size={48} />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900">Sign up free</h1>
-          <p className="text-slate-600 mt-1 text-sm">
+          <h1 className="text-3xl italic text-slate-900" style={{ fontFamily: SERIF }}>
+            Sign up free
+          </h1>
+          <p className="mt-1 text-sm text-slate-500">
             14-day trial · No credit card
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 animate-slide-up">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <Input
             label="Your name"
             placeholder="Ramesh Kumar"
@@ -130,7 +166,7 @@ export default function SignupPage() {
           </Link>
           .
         </p>
-      </div>
+      </motion.div>
     </main>
   );
 }

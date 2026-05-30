@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Navbar1 } from "@/components/ui/navbar1";
+import SmoothScroll from "./SmoothScroll";
 import LoadingScreen from "./LoadingScreen";
 import PhoneJourney from "./PhoneJourney";
 import Marquee from "./Marquee";
@@ -21,6 +22,7 @@ export default function Landing() {
 
   return (
     <div className="bg-white font-sans text-slate-900">
+      <SmoothScroll />
       <AnimatePresence>
         {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>

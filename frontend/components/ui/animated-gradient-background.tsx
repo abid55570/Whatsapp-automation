@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 interface AnimatedGradientBackgroundProps {
   startingGap?: number;
@@ -47,37 +47,13 @@ const AnimatedGradientBackground: React.FC<AnimatedGradientBackgroundProps> = ({
     );
   }
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    let animationFrame: number;
-    let width = startingGap;
-    let directionWidth = 1;
-
-    const animateGradient = () => {
-      if (width >= startingGap + breathingRange) directionWidth = -1;
-      if (width <= startingGap - breathingRange) directionWidth = 1;
-
-      if (!Breathing) directionWidth = 0;
-      width += directionWidth * animationSpeed;
-
-      const gradientStopsString = gradientStops
-        .map((stop, index) => `${gradientColors[index]} ${stop}%`)
-        .join(", ");
-
-      const gradient = `radial-gradient(${width}% ${width + topOffset}% at 50% 20%, ${gradientStopsString})`;
-
-      if (containerRef.current) {
-        containerRef.current.style.background = gradient;
-      }
-
-      animationFrame = requestAnimationFrame(animateGradient);
-    };
-
-    animationFrame = requestAnimationFrame(animateGradient);
-
-    return () => cancelAnimationFrame(animationFrame);
-  }, [startingGap, Breathing, gradientColors, gradientStops, animationSpeed, breathingRange, topOffset]);
+  // The gradient is painted ONCE (no per-frame repaint). The subtle "breathing"
+  // is done with a GPU-composited transform animation instead — same look, but
+  // it no longer forces a full-screen repaint every frame.
+  const gradientStopsString = gradientStops
+    .map((stop, index) => `${gradientColors[index]} ${stop}%`)
+    .join(", ");
+  const gradient = `radial-gradient(${startingGap}% ${startingGap + topOffset}% at 50% 20%, ${gradientStopsString})`;
 
   return (
     <motion.div
@@ -90,7 +66,10 @@ const AnimatedGradientBackground: React.FC<AnimatedGradientBackgroundProps> = ({
       }}
       className={`absolute inset-0 overflow-hidden ${containerClassName}`}
     >
-      <div ref={containerRef} style={containerStyle} className="absolute inset-0 transition-transform" />
+      <div
+        style={{ background: gradient, ...containerStyle }}
+        className={`absolute inset-0 ${Breathing ? "animate-bg-breathe" : ""}`}
+      />
     </motion.div>
   );
 };

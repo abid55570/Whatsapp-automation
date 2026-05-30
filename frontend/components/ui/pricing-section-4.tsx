@@ -74,7 +74,7 @@ export default function PricingSection() {
   return (
     <div
       id="pricing"
-      className="relative mx-auto min-h-screen overflow-x-hidden bg-[#06140e]"
+      className="relative mx-auto overflow-x-hidden bg-[#06140e] pb-20"
       ref={pricingRef}
     >
       <TimelineContent
@@ -85,8 +85,7 @@ export default function PricingSection() {
       >
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#ffffff2c_1px,transparent_1px),linear-gradient(to_bottom,#3a3a3a01_1px,transparent_1px)] bg-[size:70px_80px]" />
         <SparklesComp
-          density={1200}
-          direction="bottom"
+          density={280}
           speed={1}
           color="#FFFFFF"
           className="absolute inset-x-0 bottom-0 h-full w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
@@ -224,7 +223,6 @@ export default function PricingSection() {
           );
         })}
       </div>
-      <div className="h-16" />
     </div>
   );
 }

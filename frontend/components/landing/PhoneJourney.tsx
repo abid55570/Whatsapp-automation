@@ -37,32 +37,21 @@ export default function PhoneJourney() {
       pin: pinRef.current,
       anticipatePin: 1,
       onUpdate: (self) => {
-        progressRef.current = self.progress;
         const p = self.progress;
+        progressRef.current = p;
         // Card appears when the phone arrives on a side (0.14) and swaps during
         // each glide-across (mid-transition), so phone + card stay in sync.
         const s = p < 0.07 ? 0 : p < 0.3 ? 1 : p < 0.55 ? 2 : p < 0.8 ? 3 : 4;
         setStep((prev) => (prev === s ? prev : s));
+        // Fade the hero copy out as the phone rises to its closest point (~0.07).
+        if (heroRef.current) {
+          const o = Math.min(1, Math.max(0, 1 - (p - 0.01) / 0.06));
+          heroRef.current.style.opacity = String(o);
+          heroRef.current.style.visibility = o < 0.02 ? "hidden" : "visible";
+        }
       },
     });
     return () => st.kill();
-  }, []);
-
-  // Fade the hero copy out as the phone rises to its closest point.
-  useEffect(() => {
-    let raf = 0;
-    const tick = () => {
-      const p = progressRef.current;
-      // Hero copy fades out as the phone rises to its closest point (~p 0.07).
-      if (heroRef.current) {
-        const o = Math.min(1, Math.max(0, 1 - (p - 0.01) / 0.06));
-        heroRef.current.style.opacity = String(o);
-        heroRef.current.style.visibility = o < 0.02 ? "hidden" : "visible";
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
   }, []);
 
   const isHero = step === 0;

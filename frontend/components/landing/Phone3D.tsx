@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useLayoutEffect, useMemo, useRef } from "react";
+import { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { MutableRefObject } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, Environment } from "@react-three/drei";
@@ -79,98 +79,230 @@ function wrap(ctx: CanvasRenderingContext2D, text: string, maxW: number) {
   return lines;
 }
 
-const TIMES = ["10:21", "10:21", "10:22", "10:22", "10:23", "10:23"];
+const TIMES = ["10:18", "10:19", "10:20", "10:21", "10:22", "10:23", "10:24", "10:25"];
 
-function drawChat(ctx: CanvasRenderingContext2D, uc: Showcase) {
+function drawChat(ctx: CanvasRenderingContext2D, uc: Showcase, pfp: HTMLImageElement | null) {
   ctx.clearRect(0, 0, CW, CH);
-  // WhatsApp chat background
-  ctx.fillStyle = "#E9E2DB";
+  // WhatsApp wallpaper
+  ctx.fillStyle = "#E5DDD5";
   ctx.fillRect(0, 0, CW, CH);
 
-  // Header (with a top status-bar inset so the Dynamic Island doesn't overlap)
   const statusInset = 64;
-  const headH = 150 + statusInset;
+  const headH = statusInset + 132;
+
+  // ---------- Header ----------
   ctx.fillStyle = "#075E54";
   ctx.fillRect(0, 0, CW, headH);
-  const ax = 78;
-  const ay = statusInset + 88;
+
+  // back chevron
+  ctx.strokeStyle = "#fff";
+  ctx.lineWidth = 6;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  const cy = statusInset + 64;
   ctx.beginPath();
-  ctx.arc(ax, ay, 36, 0, Math.PI * 2);
-  ctx.fillStyle = "#cfd8d4";
-  ctx.fill();
-  ctx.fillStyle = "#075E54";
-  ctx.font = "bold 36px Inter, Arial, sans-serif";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(uc.phoneName.charAt(0), ax, ay + 2);
+  ctx.moveTo(40, cy - 16);
+  ctx.lineTo(24, cy);
+  ctx.lineTo(40, cy + 16);
+  ctx.stroke();
+
+  // avatar (photo, clipped to a circle; falls back to initial)
+  const ar = 42;
+  const ax = 100;
+  const ay = statusInset + 64;
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(ax, ay, ar, 0, Math.PI * 2);
+  ctx.closePath();
+  ctx.clip();
+  if (pfp && pfp.width > 0) {
+    const s = Math.max((ar * 2) / pfp.width, (ar * 2) / pfp.height);
+    const iw = pfp.width * s;
+    const ih = pfp.height * s;
+    ctx.drawImage(pfp, ax - iw / 2, ay - ih / 2, iw, ih);
+  } else {
+    ctx.fillStyle = "#cfd8d4";
+    ctx.fillRect(ax - ar, ay - ar, ar * 2, ar * 2);
+    ctx.fillStyle = "#075E54";
+    ctx.font = "bold 42px Inter, Arial, sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(uc.phoneName.charAt(0), ax, ay + 2);
+  }
+  ctx.restore();
+
+  // name + online
   ctx.textAlign = "left";
-  ctx.textBaseline = "top";
+  ctx.textBaseline = "alphabetic";
   ctx.fillStyle = "#fff";
-  ctx.font = "600 37px Inter, Arial, sans-serif";
-  ctx.fillText(uc.phoneName, ax + 56, statusInset + 54);
-  ctx.fillStyle = "#cdeee4";
-  ctx.font = "25px Inter, Arial, sans-serif";
-  ctx.fillText("online", ax + 56, statusInset + 98);
+  ctx.font = "600 41px Inter, Arial, sans-serif";
+  ctx.fillText(uc.phoneName, ax + ar + 24, statusInset + 56);
+  ctx.fillStyle = "#bfe6da";
+  ctx.font = "26px Inter, Arial, sans-serif";
+  ctx.fillText("online", ax + ar + 24, statusInset + 98);
 
-  // Messages
-  let y = headH + 34;
-  const pad = 30;
-  const maxW = CW * 0.74;
-  const fs = 31;
-  const lineH = fs * 1.32;
-  const bpx = 24;
-  const bpyTop = 16;
-  const metaH = 26;
+  // 3-dot menu
+  ctx.fillStyle = "#cfe8e0";
+  for (let i = 0; i < 3; i++) {
+    ctx.beginPath();
+    ctx.arc(CW - 44, statusInset + 40 + i * 22, 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
 
-  uc.chat.forEach((m: ChatMsg, idx: number) => {
-    const out = m.side === "out";
+  // ---------- Input bar (bottom) ----------
+  const inputH = 124;
+  const inputY = CH - inputH;
+  const pillX = 24;
+  const pillH = inputH - 44;
+  const pillY = inputY + 20;
+  const pillW = CW - pillX - 116;
+  roundRect(ctx, pillX, pillY, pillW, pillH, pillH / 2);
+  ctx.fillStyle = "#ffffff";
+  ctx.fill();
+  // emoji icon inside pill
+  const ex = pillX + 38;
+  const ey = pillY + pillH / 2;
+  ctx.strokeStyle = "#8696a0";
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.arc(ex, ey, 18, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.fillStyle = "#8696a0";
+  ctx.beginPath();
+  ctx.arc(ex - 6, ey - 5, 3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(ex + 6, ey - 5, 3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(ex, ey + 2, 9, 0.15 * Math.PI, 0.85 * Math.PI);
+  ctx.stroke();
+  ctx.fillStyle = "#9aa6ad";
+  ctx.font = "29px Inter, Arial, sans-serif";
+  ctx.textBaseline = "middle";
+  ctx.fillText("Message", ex + 36, ey + 1);
+  ctx.textBaseline = "top";
+  // send/mic circle
+  const sc = CW - 56;
+  const scy = inputY + inputH / 2;
+  ctx.beginPath();
+  ctx.arc(sc, scy, 42, 0, Math.PI * 2);
+  ctx.fillStyle = "#00a884";
+  ctx.fill();
+  ctx.fillStyle = "#fff";
+  roundRect(ctx, sc - 9, scy - 24, 18, 30, 9);
+  ctx.fill();
+  ctx.strokeStyle = "#fff";
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.arc(sc, scy, 16, 0.15 * Math.PI, 0.85 * Math.PI);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(sc, scy + 16);
+  ctx.lineTo(sc, scy + 26);
+  ctx.moveTo(sc - 12, scy + 26);
+  ctx.lineTo(sc + 12, scy + 26);
+  ctx.stroke();
+
+  // ---------- Messages (measure, then bottom-align so the chat fills) ----------
+  const pad = 26;
+  const maxW = CW * 0.76;
+  const fs = 32;
+  const lineH = fs * 1.34;
+  const bpx = 26;
+  const bpyTop = 18;
+  const metaH = 30;
+  const gap = 20;
+
+  const items = uc.chat.map((m) => {
     ctx.font = `${fs}px Inter, Arial, sans-serif`;
     const lines = wrap(ctx, m.text, maxW - bpx * 2);
-    const botH = m.bot ? 32 : 0;
-    const textW = Math.max(...lines.map((l) => ctx.measureText(l).width), m.bot ? 170 : 0);
+    const botH = m.bot ? 38 : 0;
+    const textW = Math.max(...lines.map((l) => ctx.measureText(l).width), m.bot ? 200 : 0);
     const bw = Math.min(maxW, Math.max(textW, 120) + bpx * 2);
-    const bh = botH + lines.length * lineH + bpyTop + metaH + 12;
-    const x = out ? CW - pad - bw : pad;
+    const bh = botH + lines.length * lineH + bpyTop + metaH + 14;
+    return { m, lines, botH, bw, bh };
+  });
+
+  const totalH = items.reduce((s, it) => s + it.bh + gap, 0) - gap;
+  const chipH = 46;
+  const areaTop = headH + 28;
+  const areaBottom = inputY - 22;
+  let y = Math.max(areaTop + chipH + 26, areaBottom - totalH);
+
+  // date chip, sitting just above the first message
+  const chipText = "TODAY";
+  ctx.font = "bold 23px Inter, Arial, sans-serif";
+  const chipW = ctx.measureText(chipText).width + 48;
+  const chipX = (CW - chipW) / 2;
+  const chipY = y - chipH - 22;
+  roundRect(ctx, chipX, chipY, chipW, chipH, 16);
+  ctx.fillStyle = "rgba(225,245,235,0.95)";
+  ctx.fill();
+  ctx.fillStyle = "#54656f";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(chipText, CW / 2, chipY + chipH / 2 + 1);
+  ctx.textAlign = "left";
+  ctx.textBaseline = "top";
+
+  items.forEach((it, idx) => {
+    const out = it.m.side === "out";
+    const x = out ? CW - pad - it.bw : pad;
 
     // bubble
-    roundRect(ctx, x, y, bw, bh, 20);
-    ctx.fillStyle = out ? "#D9FDD3" : "#ffffff";
-    ctx.shadowColor = "rgba(0,0,0,0.10)";
-    ctx.shadowBlur = 5;
+    roundRect(ctx, x, y, it.bw, it.bh, 22);
+    ctx.fillStyle = out ? "#DCF8C6" : "#ffffff";
+    ctx.shadowColor = "rgba(0,0,0,0.12)";
+    ctx.shadowBlur = 6;
     ctx.shadowOffsetY = 2;
     ctx.fill();
     ctx.shadowColor = "transparent";
     ctx.shadowBlur = 0;
+    // little tail
+    ctx.beginPath();
+    if (out) {
+      ctx.moveTo(x + it.bw - 4, y + 4);
+      ctx.lineTo(x + it.bw + 16, y);
+      ctx.lineTo(x + it.bw - 4, y + 30);
+    } else {
+      ctx.moveTo(x + 4, y + 4);
+      ctx.lineTo(x - 16, y);
+      ctx.lineTo(x + 4, y + 30);
+    }
+    ctx.closePath();
+    ctx.fillStyle = out ? "#DCF8C6" : "#ffffff";
+    ctx.fill();
 
     let ty = y + bpyTop;
-    if (m.bot) {
-      ctx.fillStyle = "#1a9d6c";
-      ctx.font = "bold 19px Inter, Arial, sans-serif";
-      ctx.fillText("AUTO-REPLY", x + bpx, ty);
-      ty += botH;
+    if (it.m.bot) {
+      ctx.fillStyle = "#1fa463";
+      ctx.font = "bold 21px Inter, Arial, sans-serif";
+      ctx.fillText("WHATLY • AUTO-REPLY", x + bpx, ty);
+      ty += it.botH;
     }
     ctx.fillStyle = "#111b21";
     ctx.font = `${fs}px Inter, Arial, sans-serif`;
-    for (const l of lines) {
+    for (const l of it.lines) {
       ctx.fillText(l, x + bpx, ty);
       ty += lineH;
     }
 
-    // timestamp + ticks (bottom-right of bubble)
+    // timestamp + ticks
     const time = TIMES[idx % TIMES.length];
-    ctx.font = "20px Inter, Arial, sans-serif";
+    ctx.font = "22px Inter, Arial, sans-serif";
     ctx.fillStyle = "#667781";
     ctx.textAlign = "right";
-    const metaRight = x + bw - bpx + (out ? -30 : 0);
-    ctx.fillText(time, metaRight, y + bh - metaH - 4);
+    const metaRight = x + it.bw - bpx + (out ? -34 : 0);
+    ctx.fillText(time, metaRight, y + it.bh - metaH - 2);
     if (out) {
-      ctx.fillStyle = "#53bdeb"; // blue double-tick
-      ctx.font = "22px Inter, Arial, sans-serif";
-      ctx.fillText("✓✓", x + bw - bpx + 2, y + bh - metaH - 5);
+      ctx.fillStyle = "#53bdeb";
+      ctx.font = "24px Inter, Arial, sans-serif";
+      ctx.fillText("✓✓", x + it.bw - bpx + 4, y + it.bh - metaH - 3);
     }
     ctx.textAlign = "left";
 
-    y += bh + 16;
+    y += it.bh + gap;
   });
 }
 
@@ -181,6 +313,11 @@ function Model({ progressRef, uc }: { progressRef: MutableRefObject<number>; uc:
   const normRef = useRef(1);
   const centerRef = useRef(new THREE.Vector3());
   const readyRef = useRef(false);
+  // Smoothed (damped) transform so the device glides toward its scroll target
+  // instead of tracking the wheel 1:1 — the premium, weighted feel.
+  const dampRef = useRef({ x: 0, y: 0, s: 1, init: false });
+  // Cache of loaded chat-header avatars, keyed by url.
+  const pfpCache = useRef(new Map<string, HTMLImageElement>());
 
   const canvas = useMemo(() => {
     const c = document.createElement("canvas");
@@ -204,9 +341,24 @@ function Model({ progressRef, uc }: { progressRef: MutableRefObject<number>; uc:
   // display is never blank once the phone appears (and redraws on use-case change).
   useLayoutEffect(() => {
     const ctx = canvas.getContext("2d");
+    let cancelled = false;
     if (ctx) {
-      drawChat(ctx, uc);
+      // Draw immediately (with the avatar if it's already cached), then load it
+      // in the background and repaint once when it arrives.
+      const cached = pfpCache.current.get(uc.pfp) ?? null;
+      drawChat(ctx, uc, cached);
       texture.needsUpdate = true;
+      if (!cached && uc.pfp) {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          if (cancelled) return;
+          pfpCache.current.set(uc.pfp, img);
+          drawChat(ctx, uc, img);
+          texture.needsUpdate = true;
+        };
+        img.src = uc.pfp;
+      }
     }
     scene.traverse((o) => {
       const mesh = o as THREE.Mesh;
@@ -232,9 +384,12 @@ function Model({ progressRef, uc }: { progressRef: MutableRefObject<number>; uc:
         mesh.visible = false;
       }
     });
+    return () => {
+      cancelled = true;
+    };
   }, [scene, texture, uc, canvas]);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     const o = outer.current;
     const inn = inner.current;
     if (!o || !inn) return;
@@ -270,11 +425,30 @@ function Model({ progressRef, uc }: { progressRef: MutableRefObject<number>; uc:
     const ucFactor = THREE.MathUtils.clamp((p - 0.05) / 0.05, 0, 1);
     const mobileYOff = -0.3 - 1.9 * ucFactor; // -0.3 (hero) -> -2.2 (use-cases, lower)
     const mobileScale = 0.78 - 0.05 * ucFactor; // 0.78 (hero) -> 0.73 (use-cases, larger)
+    const targetX = mobile ? 0 : t.x;
+    const targetY = mobile ? t.y + mobileYOff : t.y;
+    const targetS = t.s * (mobile ? mobileScale : 1);
+
+    // Seed the damped state on the first ready frame to avoid an opening swing.
+    const d = dampRef.current;
+    if (!d.init) {
+      d.x = targetX;
+      d.y = targetY;
+      d.s = targetS;
+      d.init = true;
+    }
+    const dt = Math.min(delta, 1 / 30); // clamp so tab-switches don't jump
+    const lambda = 7; // higher = snappier, lower = floatier
+    d.x = THREE.MathUtils.damp(d.x, targetX, lambda, dt);
+    d.y = THREE.MathUtils.damp(d.y, targetY, lambda, dt);
+    d.s = THREE.MathUtils.damp(d.s, targetS, lambda, dt);
+
+    // Rotation stays exact so the 360° spin reads crisp.
     o.rotation.y = THREE.MathUtils.degToRad(t.r) + BASE_ROT_Y;
     o.rotation.x = BASE_ROT_X;
-    o.position.x = mobile ? 0 : t.x;
-    o.position.y = mobile ? t.y + mobileYOff : t.y;
-    o.scale.setScalar(t.s * (mobile ? mobileScale : 1));
+    o.position.x = d.x;
+    o.position.y = d.y;
+    o.scale.setScalar(d.s);
   });
 
   return (
@@ -293,21 +467,38 @@ export default function Phone3D({
   progressRef: MutableRefObject<number>;
   uc: Showcase;
 }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  // Stop rendering the WebGL scene whenever the journey is scrolled off-screen
+  // — frees the GPU for the entire lower half of the page.
+  const [active, setActive] = useState(true);
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setActive(e.isIntersecting), {
+      rootMargin: "120px",
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <Canvas
-      className="!absolute inset-0 z-30"
-      style={{ pointerEvents: "none", zIndex: 30 }}
-      camera={{ position: [0, 0, 9], fov: 35 }}
-      gl={{ alpha: true, antialias: true }}
-      dpr={[1, 1.6]}
-    >
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[4, 6, 6]} intensity={1.4} />
-      <directionalLight position={[-5, -2, -4]} intensity={0.5} />
-      <Suspense fallback={null}>
-        <Model progressRef={progressRef} uc={uc} />
-        <Environment preset="city" />
-      </Suspense>
-    </Canvas>
+    <div ref={wrapRef} className="absolute inset-0 z-30">
+      <Canvas
+        className="!absolute inset-0"
+        style={{ pointerEvents: "none" }}
+        camera={{ position: [0, 0, 9], fov: 35 }}
+        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
+        dpr={[1, 1.25]}
+        frameloop={active ? "always" : "never"}
+      >
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[4, 6, 6]} intensity={1.4} />
+        <directionalLight position={[-5, -2, -4]} intensity={0.5} />
+        <Suspense fallback={null}>
+          <Model progressRef={progressRef} uc={uc} />
+          <Environment preset="city" />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 }

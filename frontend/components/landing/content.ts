@@ -20,14 +20,23 @@ export const pexels = (id: number, w = 1000) =>
 export const pexelsPortrait = (id: number, w = 640, h = 800) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&h=${h}&fit=crop`;
 
+/** Friendly illustrated (comic) avatar from a seed — DiceBear, no API key,
+ *  CORS-enabled so it can also be drawn into the phone's WebGL chat canvas. */
+export const avatar = (seed: string) =>
+  `https://api.dicebear.com/9.x/avataaars/png?seed=${encodeURIComponent(
+    seed
+  )}&size=240&radius=50&backgroundColor=b9f0d4,c8f5dd,a6e9c6,d9fbe8`;
+
 export const SIGNUP_HREF = "/language?next=/signup";
 
-export const NAV_LINKS = [
+/** Nav items: `section` scrolls within the page, `href` routes to a page. */
+export const NAV_LINKS: { label: string; section?: string; href?: string }[] = [
   { label: "Home", section: "hero" },
   { label: "Features", section: "features" },
   { label: "Pricing", section: "pricing" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", section: "faq" },
-] as const;
+];
 
 /** Words cycled on the loading screen. */
 export const LOADING_WORDS = ["Reply", "Sell", "Grow"];
@@ -94,21 +103,59 @@ export const STEPS = [
   },
 ];
 
-/** Parallax gallery — Indian SMBs in the wild. */
+/** Bento "works" grid — Indian SMB types + the pain Whatly solves for each. */
 export interface GalleryItem {
   title: string;
+  /** Pain-point fact shown on hover (what they lose without fast replies). */
+  fact: string;
   image: string;
   rotation: number;
   column: 0 | 1;
 }
 
 export const GALLERY: GalleryItem[] = [
-  { title: "Restaurants", image: pexels(31071253, 1200), rotation: -3, column: 0 },
-  { title: "Gyms & studios", image: pexels(29526371, 1000), rotation: 2, column: 1 },
-  { title: "Clinics", image: pexels(33812025, 1000), rotation: 3, column: 0 },
-  { title: "Salons & spas", image: pexels(7922651, 1000), rotation: -2, column: 1 },
-  { title: "Kirana stores", image: pexels(26309839, 1000), rotation: -4, column: 0 },
-  { title: "Boutiques", image: pexels(8386651, 1200), rotation: 2, column: 1 },
+  {
+    title: "Restaurants",
+    fact: "Diners order from whoever replies first — a late reply at the dinner rush is a lost table.",
+    image: pexels(31071253, 1200),
+    rotation: -3,
+    column: 0,
+  },
+  {
+    title: "Gyms & studios",
+    fact: "Most membership enquiries go cold if no one answers within the hour.",
+    image: pexels(29526371, 1000),
+    rotation: 2,
+    column: 1,
+  },
+  {
+    title: "Clinics",
+    fact: "Patients book the clinic that answers now — not the one that calls back later.",
+    image: pexels(33812025, 1000),
+    rotation: 3,
+    column: 0,
+  },
+  {
+    title: "Salons & spas",
+    fact: "A booking message missed at peak hours is an empty chair you can't refill.",
+    image: pexels(7922651, 1000),
+    rotation: -2,
+    column: 1,
+  },
+  {
+    title: "Kirana stores",
+    fact: "Customers reorder from whoever confirms stock and price fastest.",
+    image: pexels(26309839, 1000),
+    rotation: -4,
+    column: 0,
+  },
+  {
+    title: "Boutiques",
+    fact: "Shoppers asking for sizes buy from the first store that replies.",
+    image: pexels(8386651, 1200),
+    rotation: 2,
+    column: 1,
+  },
 ];
 
 /** Testimonials from Indian SMB owners — split across two parallax columns. */
@@ -135,7 +182,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: "Delhi",
     type: "Restaurant",
     initials: "RK",
-    image: pexelsPortrait(7580640),
+    image: avatar("Rajesh Kumar"),
     rotation: -2,
     column: 0,
   },
@@ -147,7 +194,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: "Hyderabad",
     type: "Gym & fitness",
     initials: "KV",
-    image: pexelsPortrait(4965012),
+    image: avatar("Karan Verma"),
     rotation: 2,
     column: 1,
   },
@@ -159,7 +206,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: "Mumbai",
     type: "Kirana store",
     initials: "SS",
-    image: pexelsPortrait(7581109),
+    image: avatar("Suresh Sharma"),
     rotation: 3,
     column: 0,
   },
@@ -171,7 +218,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: "Pune",
     type: "Salon & spa",
     initials: "AS",
-    image: pexelsPortrait(7580822),
+    image: avatar("Anjali Sharma"),
     rotation: -3,
     column: 1,
   },
@@ -183,7 +230,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: "Jaipur",
     type: "Boutique",
     initials: "RC",
-    image: pexelsPortrait(7580948),
+    image: avatar("Riya Choudhary"),
     rotation: 2,
     column: 0,
   },
@@ -195,7 +242,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: "Kochi",
     type: "Clinic",
     initials: "DM",
-    image: pexelsPortrait(7580983),
+    image: avatar("Dr. Mehta"),
     rotation: -2,
     column: 1,
   },
@@ -217,6 +264,8 @@ export interface Showcase {
   /** Short feature bullets shown under the blurb. */
   points: string[];
   phoneName: string;
+  /** Avatar shown in the WhatsApp chat header (square portrait crop). */
+  pfp: string;
   chat: ChatMsg[];
 }
 
@@ -233,6 +282,7 @@ export const SHOWCASE: Showcase[] = [
       "Never leaves a hungry customer on read",
     ],
     phoneName: "Tandoori House",
+    pfp: avatar("Tandoori House"),
     chat: [
       { side: "out", text: "Aaj ka menu bhejo?" },
       { side: "in", bot: true, text: "🍽️ Butter Naan ₹40 · Paneer Tikka ₹220 · Dal Makhani ₹180. Order karein?" },
@@ -254,6 +304,7 @@ export const SHOWCASE: Showcase[] = [
       "Queues cash-on-delivery pickups",
     ],
     phoneName: "Sharma Kirana",
+    pfp: avatar("Sharma Kirana"),
     chat: [
       { side: "out", text: "kitne ka hai atta?" },
       { side: "in", bot: true, text: "Atta 5kg ₹250, 1kg ₹55. ✅ In stock!" },
@@ -275,6 +326,7 @@ export const SHOWCASE: Showcase[] = [
       "Cuts no-shows without a phone call",
     ],
     phoneName: "Glow Salon",
+    pfp: avatar("Glow Salon"),
     chat: [
       { side: "out", text: "Kal haircut ka slot hai?" },
       { side: "in", bot: true, text: "Kal khaali: 11 AM, 2 PM, 5 PM. Kaunsa karein?" },
@@ -294,6 +346,7 @@ export const SHOWCASE: Showcase[] = [
       "Flags urgent messages for staff",
     ],
     phoneName: "CityCare Clinic",
+    pfp: avatar("CityCare Clinic"),
     chat: [
       { side: "out", text: "Doctor aaj available hain?" },
       { side: "in", bot: true, text: "Aaj OPD 4–8 PM. Appointment book karein?" },

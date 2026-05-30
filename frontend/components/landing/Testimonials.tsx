@@ -9,7 +9,6 @@ import { TESTIMONIALS, type Testimonial } from "./content";
 
 export default function Testimonials() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const centerRef = useRef<HTMLDivElement>(null);
   const col0Ref = useRef<HTMLDivElement>(null);
   const col1Ref = useRef<HTMLDivElement>(null);
 
@@ -20,21 +19,16 @@ export default function Testimonials() {
       // section is the circular carousel below, so skip GSAP entirely.
       const mm = gsap.matchMedia();
       mm.add("(min-width: 768px)", () => {
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          pin: centerRef.current,
-          pinSpacing: false,
-        });
+        // Heading sits at the top (readable); the two columns drift at different
+        // speeds for the parallax effect as the section scrolls through.
         const scrub = {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
           scrub: true,
         };
-        gsap.fromTo(col0Ref.current, { yPercent: 6 }, { yPercent: -10, ease: "none", scrollTrigger: scrub });
-        gsap.fromTo(col1Ref.current, { yPercent: -12 }, { yPercent: 8, ease: "none", scrollTrigger: scrub });
+        gsap.fromTo(col0Ref.current, { yPercent: 4 }, { yPercent: -8, ease: "none", scrollTrigger: scrub });
+        gsap.fromTo(col1Ref.current, { yPercent: -8 }, { yPercent: 6, ease: "none", scrollTrigger: scrub });
       });
     }, sectionRef);
     return () => ctx.revert();
@@ -89,12 +83,13 @@ export default function Testimonials() {
         “{t.quote}”
       </blockquote>
       <figcaption className="mt-7 flex items-center gap-3.5">
-        <span
-          className="flex h-12 w-12 flex-none items-center justify-center rounded-full text-base font-semibold text-white"
-          style={{ background: "linear-gradient(135deg,#25d366,#128c7e)" }}
-        >
-          {t.initials}
-        </span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={t.image}
+          alt={t.name}
+          loading="lazy"
+          className="h-12 w-12 flex-none rounded-full object-cover ring-2 ring-[#25d366]/35"
+        />
         <span className="leading-tight">
           <span className="block text-sm font-semibold text-slate-900">{t.name}</span>
           <span className="block text-xs text-slate-500">
@@ -119,24 +114,19 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* ---------- DESKTOP: pinned parallax columns ---------- */}
-      <div ref={sectionRef} className="relative hidden md:block md:min-h-[165vh]">
-        <div
-          ref={centerRef}
-          className="pointer-events-none relative z-10 flex h-screen items-center justify-center"
-        >
-          <div className="pointer-events-auto">
-            <Heading />
-          </div>
+      {/* ---------- DESKTOP: heading on top, parallax columns below ---------- */}
+      <div ref={sectionRef} className="relative hidden md:block md:pb-28 md:pt-32">
+        <div className="relative z-30 mx-auto mb-4 max-w-xl px-6">
+          <Heading />
         </div>
 
-        <div className="absolute inset-0 z-20 mx-auto grid max-w-[1500px] grid-cols-2 gap-28 px-10">
-          <div ref={col0Ref} className="flex flex-col gap-16 pt-[12vh]">
+        <div className="relative z-20 mx-auto grid max-w-[1500px] grid-cols-2 gap-20 px-10 lg:gap-28">
+          <div ref={col0Ref} className="flex flex-col gap-16 pt-[2vh]">
             {col0.map((t) => (
               <Card key={t.name} t={t} />
             ))}
           </div>
-          <div ref={col1Ref} className="flex flex-col gap-16 pt-[32vh]">
+          <div ref={col1Ref} className="flex flex-col gap-16 pt-[14vh]">
             {col1.map((t) => (
               <Card key={t.name} t={t} />
             ))}

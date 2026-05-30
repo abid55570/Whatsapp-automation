@@ -17,7 +17,7 @@ export default function Stats() {
               viewport={{ once: true, margin: "-80px" }}
               className="flex flex-col items-center text-center sm:items-start sm:text-left"
             >
-              <span className="font-display-serif text-gradient text-5xl leading-none md:text-6xl lg:text-7xl">
+              <span className="text-gradient font-sans text-5xl font-extrabold leading-none tracking-tight md:text-6xl lg:text-7xl">
                 {stat.value}
               </span>
               <span className="mt-3 text-xs uppercase tracking-[0.2em] text-slate-500">
