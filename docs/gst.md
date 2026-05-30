@@ -155,17 +155,19 @@ Downloads an Excel with 5 sheets:
 
 Take the xlsx to your CA OR file yourself at **incometax.gov.in → ITR-4**.
 
-## 9. Monthly CA email automation
+## 9. Sharing reports with your CA
 
-If you have a CA, add their email in your account profile (Settings → Personal
-details → email — coming V2.1).
+Whatly doesn't send emails — you download the filing pack and forward to
+your CA the way you prefer (WhatsApp, email, drive link, whatever they use).
 
-On the 1st of every month, we email your CA:
-- Last month's GSTR-1 JSON
-- Last month's GSTR-3B summary xlsx
-- Last month's sales register xlsx
+Recommended monthly routine:
+1. Open **Tax Filing Center**
+2. Tap **GSTR-1 JSON** + **GSTR-3B Summary** + **Sales Register**
+3. Three files download to your phone
+4. WhatsApp them to your CA in one message ("Bhaisahab, last month ke files")
 
-They get a heads-up to start filing before the 20th deadline.
+Takes 30 seconds. Your CA gets the same data they'd get from any automation
+without you needing to maintain email settings.
 
 ## 10. Cancelling an invoice
 

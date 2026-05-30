@@ -1,5 +1,8 @@
 # Setup — zero to running app
 
+> Can't / don't want to run Docker? See **`docs/setup-no-docker.md`** for a
+> native setup (install Postgres + Redis + Python + Node yourself).
+
 ## Prereqs
 - Docker Desktop (Windows/Mac/Linux) — https://docker.com/desktop
 - Git
@@ -34,7 +37,7 @@ META_WEBHOOK_VERIFY_TOKEN=local-dev-token
 docker compose up -d
 ```
 
-Brings up: postgres, redis, backend (FastAPI), worker (Celery), beat (cron), frontend (Next.js), mailhog, adminer, flower.
+Brings up: postgres, redis, backend (FastAPI), worker (Celery), beat (cron), frontend (Next.js), adminer, flower.
 
 Verify:
 ```bash
@@ -48,7 +51,6 @@ URLs (local):
 - Swagger docs: http://localhost:8000/docs
 - Adminer (DB GUI): http://localhost:8080  (server=postgres, user=postgres, pass=postgres)
 - Flower (Celery monitor): http://localhost:5555
-- MailHog (caught emails): http://localhost:8025
 
 ## 4. Database migration
 

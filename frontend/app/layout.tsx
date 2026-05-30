@@ -24,8 +24,8 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://yourdomain.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "WhatsApp Auto — ₹399/mo Business Automation for Indian SMBs",
-    template: "%s · WhatsApp Auto",
+    default: "Whatly — ₹399/mo Business Automation for Indian SMBs",
+    template: "%s · Whatly",
   },
   description:
     "Affordable WhatsApp auto-reply, order taking, and customer support for kirana, restaurant, salon, clinic. Hindi/Hinglish/English/Bengali. 14-day free trial, no card.",
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     "Wati alternative India",
     "AiSensy alternative",
   ],
-  applicationName: "WhatsApp Auto",
-  authors: [{ name: "WhatsApp Auto" }],
+  applicationName: "Whatly",
+  authors: [{ name: "Whatly" }],
   alternates: {
     canonical: "/",
     languages: {
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     locale: "en_IN",
     alternateLocale: ["hi_IN", "bn_IN", "ur_IN"],
     url: SITE_URL,
-    siteName: "WhatsApp Auto",
-    title: "WhatsApp Auto — ₹399/mo for Indian SMBs",
+    siteName: "Whatly",
+    title: "Whatly — ₹399/mo for Indian SMBs",
     description:
       "Auto-reply customers in 6 languages, take orders, send payment links — all on WhatsApp.",
     images: [
@@ -67,27 +67,30 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "WhatsApp Auto for Indian small businesses",
+        alt: "Whatly for Indian small businesses",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WhatsApp Auto — ₹399/mo Business Automation",
+    title: "Whatly — ₹399/mo Business Automation",
     description:
       "Affordable WhatsApp auto-reply + order taking for Indian SMBs. 14-day free trial.",
     images: ["/og-image.png"],
   },
   manifest: "/manifest.json",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/icon-192.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon", type: "image/png", sizes: "32x32" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/apple-icon",
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "WA Auto",
+    title: "Whatly",
   },
   formatDetection: {
     telephone: true,

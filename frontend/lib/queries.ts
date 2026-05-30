@@ -458,7 +458,7 @@ export async function downloadAccountExport(): Promise<void> {
   const url = window.URL.createObjectURL(new Blob([resp.data]));
   const link = document.createElement("a");
   link.href = url;
-  link.download = `whatsapp-auto-export-${new Date()
+  link.download = `whatly-export-${new Date()
     .toISOString()
     .slice(0, 10)}.zip`;
   document.body.appendChild(link);

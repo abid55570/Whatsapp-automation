@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Refund & Cancellation Policy",
   description:
-    "Refund and cancellation terms for WhatsApp Auto SaaS subscriptions.",
+    "Refund and cancellation terms for Whatly SaaS subscriptions.",
   alternates: { canonical: "/refund" },
 };
 
@@ -128,7 +128,7 @@ function LegalLayout({
             <span className="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center">
               💬
             </span>
-            <span className="font-bold text-slate-900">WhatsApp Auto</span>
+            <span className="font-bold text-slate-900">Whatly</span>
           </Link>
           <Link
             href="/"

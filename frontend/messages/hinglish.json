@@ -20,7 +20,217 @@
     "feature_sheets": "Google Sheet edit karein, bot turant update",
     "cta": "14-Din Free Trial Shuru karein",
     "trust": "Credit card nahi chahiye · Kabhi bhi cancel",
-    "price_hint": "Plans ₹399/mahina se shuru"
+    "price_hint": "Plans ₹399/mahina se shuru",
+    "log_in": "Log in",
+    "start_free": "Free shuru karein",
+    "built_for": "Indian dukandaron ke liye banaya",
+    "hero_title_a": "Apni shop ka WhatsApp chalaaiye —",
+    "hero_title_b": "automatically",
+    "hero_subtitle": "Customer ko auto-reply, order lena, pickup schedule. Hindi, English, Hinglish, Bengali, Urdu, Bhojpuri mein.",
+    "hero_price_inline": "₹399/mahina se shuru.",
+    "see_pricing": "Pricing dekho",
+    "no_card_cancel": "Koi card nahi · Koi setup fee nahi · Kabhi bhi cancel",
+    "reels_helper": "Swipe / tap karke industry badlein. Har business ke liye wahi engine.",
+    "without_whatly": "Whatly ke bina",
+    "without_whatly_desc": "Raat 9 baje ke baad 30% msg miss. Customer chala jaata hai.",
+    "with_whatly": "Whatly ke saath",
+    "with_whatly_desc": "Bot 24×7 reply karta hai. Aap soyein, order aate rahein.",
+    "uc_title": "Har chhote business ke liye",
+    "uc_sub": "Ek platform. Har business apni zaroorat use kare.",
+    "uc_restaurant": "Restaurant",
+    "uc_kirana": "Kirana",
+    "uc_salon": "Salon",
+    "uc_clinic": "Clinic",
+    "uc_gym": "Gym",
+    "uc_coaching": "Coaching",
+    "uc_d2c": "D2C Brand",
+    "uc_anything": "Kuch bhi",
+    "feat_title": "WhatsApp pe business chalane ke liye sab kuch",
+    "feat_sub": "No coding. No setup fee. No surprises.",
+    "feat_reply_title": "6 bhasha mein auto-reply",
+    "feat_reply_body": "English, Hindi, Hinglish, Bengali, Urdu, Bhojpuri. Customer ne jo likha woh detect karta hai, usi bhasha mein reply.",
+    "feat_sheets_title": "Google Sheet edit → bot update",
+    "feat_sheets_body": "Koi admin panel nahi. Sheet mein items ya FAQs add karein, bot har 15 min mein sync.",
+    "feat_orders_title": "Orders + Pickup",
+    "feat_orders_body": "Customer kahe '2 atta'. Bot parse karta hai, total banata hai, pickup time poochta hai. Cash ya UPI.",
+    "feat_inbox_title": "Real-time inbox",
+    "feat_inbox_body": "Saare customer msg phone par. Bot ko nahi pata to khud reply karein.",
+    "feat_lang_title": "Customer ki bhasha mein reply",
+    "feat_lang_body": "Customer ne Hindi likhi? Hindi mein reply. Hinglish likhi? Hinglish. Automatic.",
+    "feat_ai_title": "AI add-on (optional)",
+    "feat_ai_body": "₹699/mo. Smart fallback jab FAQ match na ho. English replies customer ki bhasha mein auto.",
+    "how_title": "10 minute mein live",
+    "how_sub": "Sign-up se pehle auto-reply tak. Koi tech skill nahi chahiye.",
+    "step1_title": "Free sign up",
+    "step1_body": "Phone number → WhatsApp se verify → 14-din trial. Koi card nahi.",
+    "step2_title": "WhatsApp Business connect",
+    "step2_body": "Ek tap. Meta ka official signup. Data aapka rahega.",
+    "step3_title": "Auto-replies chunein",
+    "step3_body": "12 ready templates: price, timing, location, menu wagaira. Reply edit karein, ho gaya.",
+    "step4_title": "Customer ko turant jawab",
+    "step4_body": "Bot 24/7 customer ki bhasha mein reply karta hai. Sab inbox mein dikhta hai.",
+    "price_title": "Imaandar pricing",
+    "price_sub": "Jitna shop use kare utna do. Kabhi bhi cancel.",
+    "price_card_btn": "Free trial shuru",
+    "trust_languages": "Bhashayein",
+    "trust_starts": "/mahina se shuru",
+    "trust_live": "Live hone mein",
+    "trust_trial": "Free trial",
+    "faq_title": "Aam sawaal",
+    "final_title": "Wahi reply baar baar likhna band karein",
+    "final_sub": "Ek baar setup karein. Chain se soyein. Customer ko turant reply — raat 2 baje bhi.",
+    "final_btn": "14-din free trial shuru",
+    "final_card": "No card · Plans ₹399/mo se",
+    "footer_product": "Product",
+    "footer_pricing": "Pricing",
+    "footer_signup": "Sign up",
+    "footer_login": "Log in",
+    "footer_legal": "Legal",
+    "footer_terms": "Terms",
+    "footer_privacy": "Privacy"
+  },
+  "reels": {
+    "auto_reply": "Auto-reply",
+    "online": "online",
+    "kirana": {
+      "business": "Sharma Kirana",
+      "tag": "Kirana / General Store",
+      "badge": "Order",
+      "lines": [
+        "kitne ka hai atta?",
+        "Atta 5kg ₹250, 1kg ₹55. ✅ In stock!",
+        "2 atta, 1 toor dal bhejo",
+        "📝 Order: ₹680 · Pickup 5 PM tak. Confirm karne ke liye YES",
+        "haan",
+        "✅ Order #1234 confirmed! 💵 Cash on pickup."
+      ]
+    },
+    "restaurant": {
+      "business": "Tandoori Dhaba",
+      "tag": "Restaurant",
+      "badge": "Menu · Online pay",
+      "lines": [
+        "menu bhejo bhaiya",
+        "🍴 *Aaj ka menu*\n• Paneer Butter ₹280\n• Dal Makhani ₹220\n• Roti ₹15\n• Lassi ₹60",
+        "2 paneer butter, 4 roti",
+        "🛒 ₹620 · 30 min me ready. Reply YES",
+        "yes",
+        "✅ Order #42 confirmed.\n💳 Pay: rzp.io/i/abc123"
+      ]
+    },
+    "salon": {
+      "business": "Glow Salon",
+      "tag": "Salon / Parlour",
+      "badge": "Booking",
+      "lines": [
+        "haircut kitne ka?",
+        "💇 Ladies cut ₹400 · Men cut ₹150\n💆 Facial ₹600+\n🕒 10 AM - 8 PM",
+        "kal 4 PM slot khali hai?",
+        "✅ Kal 4 PM available. Confirm karne ke liye YES bhejo",
+        "yes",
+        "🎀 Booked! 4 PM Mon · Shop 5, MG Road. Milte hain ✨"
+      ]
+    },
+    "gym": {
+      "business": "PowerHouse Gym",
+      "tag": "Gym / Fitness",
+      "badge": "Membership",
+      "lines": [
+        "membership kitne ki hai?",
+        "💪 1 month ₹1,200\n3 months ₹3,000\n12 months ₹9,600\nFree trial: 1 session",
+        "trial book karna hai",
+        "Kal ke slots:\n🌅 6 AM, 7 AM\n🌆 6 PM, 7 PM\nTime reply karo",
+        "kal 6 AM",
+        "✅ Trial booked! Kal 6 AM. Paani ki bottle laana. 💪"
+      ]
+    },
+    "coaching": {
+      "business": "Bright Coaching",
+      "tag": "Coaching / Tuition",
+      "badge": "Admission",
+      "lines": [
+        "10th class ki fees kitni hai?",
+        "📚 Class 10 — ₹3,500/month\nYA ₹35,000 full year (save ₹7k)\n📅 Demo class: Sat 10 AM",
+        "demo book",
+        "Aapka naam aur phone bhejo confirm karne ke liye",
+        "Rohan, 9876543210",
+        "✅ Saturday 10 AM booked, Rohan. Address: Bright Coaching, 2nd Floor, Civil Lines"
+      ]
+    },
+    "clinic": {
+      "business": "Dr. Verma Clinic",
+      "tag": "Clinic / Doctor",
+      "badge": "Appointment",
+      "lines": [
+        "doctor aaj available hain?",
+        "🩺 Dr. Verma: Mon-Sat\n🕥 10 AM - 7 PM\nAaj ke slots: 3 PM, 5 PM, 6:30 PM",
+        "5 baje book karna hai",
+        "Patient name + age bhejo",
+        "Priya, 28",
+        "✅ Aaj 5 PM Priya ke liye. Token #14\n📍 Verma Clinic, Sector 17"
+      ]
+    }
+  },
+  "hook": {
+    "badge": "Asli problem",
+    "title_a": "Raat ko kya hota hai",
+    "title_night": "raat",
+    "subtitle": "Wahi shop · wahi customer · alag result.",
+    "without_label": "Whatly ke bina",
+    "with_label": "Whatly ke saath",
+    "toggle_without": "Bina",
+    "toggle_with": "Whatly se",
+    "kirana": {
+      "name": "Kirana",
+      "without": {
+        "badge": "11:42 PM",
+        "headline": "Aaj raat 8 customer chhod ke chale gaye",
+        "subhead": "Owner so raha hai. Phone bajta raha. Koi reply nahi.",
+        "chats": ["kya open ho?", "atta hai bhaiya?", "2 atta 1 dal milega?", "koi reply nahi… 😞"],
+        "stat_labels": ["Lost orders", "Missed msgs", "Replies"]
+      },
+      "with": {
+        "badge": "11:42 PM · auto",
+        "headline": "Owner so raha hai. Bot dukaan chala raha hai.",
+        "subhead": "Har msg ka jawab. Order subah ke liye ready.",
+        "chats": ["kya open ho?", "atta hai bhaiya?", "2 atta 1 dal milega?", "thanks! kal subah aata hu"],
+        "stat_labels": ["Recovered", "24×7 reply", "Reply time"]
+      }
+    },
+    "salon": {
+      "name": "Salon",
+      "without": {
+        "badge": "Sunday band",
+        "headline": "Sunday: band. Booking? Woh bhi band.",
+        "subhead": "8 dulhan ne msg kiya. Kisi ko jawab nahi. Kahin aur chali gayi.",
+        "chats": ["aaj haircut book karna hai", "facial slot khali?", "shaam ko wedding hai 😩", "kahin aur try karti hu"],
+        "stat_labels": ["Lost booking", "Dulhan gayi", "Confirm"]
+      },
+      "with": {
+        "badge": "Sunday · auto-book",
+        "headline": "Sunday chhutti, par booking aati rahi.",
+        "subhead": "Bot sheet se slot book karta hai. Monday — calendar full.",
+        "chats": ["aaj haircut book karna hai", "facial slot khali?", "shaam ko wedding hai 😩", "✅ booked! 7 PM dekh lo"],
+        "stat_labels": ["Capture", "Booked", "Rivals ko gaye"]
+      }
+    },
+    "restaurant": {
+      "name": "Restaurant",
+      "without": {
+        "badge": "Lunch rush",
+        "headline": "Kitchen + phone + delivery — kuch toh chhutega",
+        "subhead": "Owner khana bana raha. WhatsApp bharta ja raha. Order Swiggy pe.",
+        "chats": ["menu bhejo bhaiya", "delivery 1 hr me?", "kahan ho?", "🤷 chalo Swiggy se"],
+        "stat_labels": ["Swiggy cut", "Direct order gaye", "Reply lag"]
+      },
+      "with": {
+        "badge": "Lunch rush · auto",
+        "headline": "Khana banao. Bot baki sab sambhalega.",
+        "subhead": "Menu auto. UPI link auto. ETA auto-track.",
+        "chats": ["menu bhejo bhaiya", "2 paneer butter, 4 roti", "paid ✓", "✅ ETA 30 min"],
+        "stat_labels": ["Aggregator cut", "Direct + paid", "Reply"]
+      }
+    }
   },
   "lang_picker": {
     "title": "Apni bhasha chuniye",

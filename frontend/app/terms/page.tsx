@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Terms of Service",
   description:
-    "Terms of Service for WhatsApp Auto — the WhatsApp automation platform for Indian small businesses.",
+    "Terms of Service for Whatly — the WhatsApp automation platform for Indian small businesses.",
   alternates: { canonical: "/terms" },
 };
 
@@ -11,13 +11,13 @@ export default function TermsPage() {
   return (
     <LegalLayout title="Terms of Service" lastUpdated="20 May 2026">
       <Section title="1. Acceptance">
-        By creating an account or using <strong>WhatsApp Auto</strong> ("the
+        By creating an account or using <strong>Whatly</strong> ("the
         Service"), you agree to these Terms. If you do not agree, do not use
         the Service.
       </Section>
 
       <Section title="2. What we provide">
-        WhatsApp Auto is a SaaS platform that helps Indian small businesses
+        Whatly is a SaaS platform that helps Indian small businesses
         automate WhatsApp customer conversations via Meta's WhatsApp Cloud
         API. We provide auto-reply, order management, sheet sync, and related
         tooling. We are <em>not</em> Meta and do not own WhatsApp.
@@ -156,7 +156,7 @@ function LegalLayout({
             <span className="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center">
               💬
             </span>
-            <span className="font-bold text-slate-900">WhatsApp Auto</span>
+            <span className="font-bold text-slate-900">Whatly</span>
           </Link>
           <Link
             href="/"

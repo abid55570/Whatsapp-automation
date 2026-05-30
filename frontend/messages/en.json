@@ -20,7 +20,216 @@
     "feature_sheets": "Edit Google Sheet, bot updates instantly",
     "cta": "Start 14-Day Free Trial",
     "trust": "No credit card required · Cancel anytime",
-    "price_hint": "Plans start at ₹399/month"
+    "price_hint": "Plans start at ₹399/month",
+    "log_in": "Log in",
+    "start_free": "Start free",
+    "built_for": "Built for Indian shop owners",
+    "hero_title_a": "Make WhatsApp work for your shop —",
+    "hero_title_b": "automatically",
+    "hero_subtitle": "Auto-reply to customers, take orders, schedule pickups. In Hindi, English, Hinglish, Bengali, Urdu, Bhojpuri.",
+    "hero_price_inline": "Starting at ₹399/month.",
+    "see_pricing": "See pricing",
+    "no_card_cancel": "No credit card · No setup fees · Cancel anytime",
+    "reels_helper": "Swipe / tap to switch industries. Same engine, every business.",
+    "without_whatly": "Without Whatly",
+    "without_whatly_desc": "Owner misses 30% of messages after 9 PM. Customers leave.",
+    "with_whatly": "With Whatly",
+    "with_whatly_desc": "Bot replies 24×7. Orders flow in even while you sleep.",
+    "uc_title": "Built for every small business",
+    "uc_sub": "One platform. Each business uses what they need.",
+    "uc_restaurant": "Restaurant",
+    "uc_kirana": "Kirana",
+    "uc_salon": "Salon",
+    "uc_clinic": "Clinic",
+    "uc_gym": "Gym",
+    "uc_coaching": "Coaching",
+    "uc_d2c": "D2C Brand",
+    "uc_anything": "Anything",
+    "feat_title": "Everything you need to run on WhatsApp",
+    "feat_sub": "No coding. No setup fees. No surprises.",
+    "feat_reply_title": "Auto-reply in 6 languages",
+    "feat_reply_body": "English, Hindi, Hinglish, Bengali, Urdu, Bhojpuri. Detects what your customer wrote, replies in same language.",
+    "feat_sheets_title": "Edit Google Sheet → bot updates",
+    "feat_sheets_body": "No admin panels. Add new menu items or FAQs in your Sheet, bot syncs every 15 min.",
+    "feat_orders_title": "Orders + Pickup",
+    "feat_orders_body": "Customer says '2 atta'. Bot parses, calculates total, asks pickup time. Cash or UPI.",
+    "feat_inbox_title": "Real-time inbox",
+    "feat_inbox_body": "See all customer messages on your phone. Reply manually when bot doesn't know.",
+    "feat_lang_title": "Customer-language replies",
+    "feat_lang_body": "Customer wrote Hindi? Replies in Hindi. Wrote Hinglish? Replies in Hinglish. Automatic.",
+    "feat_ai_title": "AI add-on (optional)",
+    "feat_ai_body": "₹699/mo. Smart fallback when no FAQ matches. Auto-translates English replies to customer's language.",
+    "how_title": "Live in 10 minutes",
+    "how_sub": "From signup to first auto-reply. No tech skills needed.",
+    "step1_title": "Sign up free",
+    "step1_body": "Phone number → verify via WhatsApp → 14-day trial starts. No credit card.",
+    "step2_title": "Connect WhatsApp Business",
+    "step2_body": "One tap. Meta's official Embedded Signup. Your data stays yours.",
+    "step3_title": "Pick auto-replies",
+    "step3_body": "12 ready templates: price, timings, location, menu, etc. Edit the answers, done.",
+    "step4_title": "Customers get instant answers",
+    "step4_body": "Bot replies 24/7 in customer's language. You see everything in the inbox.",
+    "price_title": "Honest pricing",
+    "price_sub": "Pay only what your shop uses. Cancel anytime.",
+    "price_card_btn": "Start free trial",
+    "trust_languages": "Languages supported",
+    "trust_starts": "Starts from / month",
+    "trust_live": "To go live",
+    "trust_trial": "Free trial",
+    "faq_title": "Common questions",
+    "final_title": "Stop typing the same answers",
+    "final_sub": "Set up once. Sleep better. Your customers get instant replies — even at 2 AM.",
+    "final_btn": "Start your 14-day free trial",
+    "final_card": "No credit card · Plans from ₹399/mo",
+    "footer_product": "Product",
+    "footer_pricing": "Pricing",
+    "footer_signup": "Sign up",
+    "footer_login": "Log in",
+    "footer_legal": "Legal",
+    "footer_terms": "Terms of Service",
+    "footer_privacy": "Privacy Policy"
+  },
+  "reels": {
+    "auto_reply": "Auto-reply",
+    "online": "online",
+    "kirana": {
+      "business": "Sharma Kirana",
+      "tag": "Kirana / General Store",
+      "badge": "Order",
+      "lines": [
+        "How much for atta (flour)?",
+        "Atta 5kg ₹250, 1kg ₹55. ✅ In stock!",
+        "Send 2 atta, 1 toor dal",
+        "📝 Order: ₹680 · Pickup by 5 PM. Reply YES to confirm.",
+        "yes",
+        "✅ Order #1234 confirmed! 💵 Cash on pickup."
+      ]
+    },
+    "restaurant": {
+      "business": "Tandoori Dhaba",
+      "tag": "Restaurant",
+      "badge": "Menu · Online pay",
+      "lines": [
+        "Send the menu please",
+        "🍴 *Today's menu*\n• Paneer Butter ₹280\n• Dal Makhani ₹220\n• Roti ₹15\n• Lassi ₹60",
+        "2 paneer butter, 4 roti",
+        "🛒 ₹620 · ready in 30 min. Reply YES",
+        "yes",
+        "✅ Order #42 confirmed.\n💳 Pay: rzp.io/i/abc123"
+      ]
+    },
+    "salon": {
+      "business": "Glow Salon",
+      "tag": "Salon / Parlour",
+      "badge": "Booking",
+      "lines": [
+        "How much for a haircut?",
+        "💇 Ladies cut ₹400 · Men cut ₹150\n💆 Facial ₹600+\n🕒 10 AM - 8 PM",
+        "Is tomorrow's 4 PM slot free?",
+        "✅ Tomorrow 4 PM available. Reply YES to confirm",
+        "yes",
+        "🎀 Booked! 4 PM Mon · Shop 5, MG Road. See you soon ✨"
+      ]
+    },
+    "gym": {
+      "business": "PowerHouse Gym",
+      "tag": "Gym / Fitness",
+      "badge": "Membership",
+      "lines": [
+        "How much is membership?",
+        "💪 1 month ₹1,200\n3 months ₹3,000\n12 months ₹9,600\nFree trial: 1 session",
+        "I want to book a trial",
+        "Tomorrow's slots:\n🌅 6 AM, 7 AM\n🌆 6 PM, 7 PM\nReply with a time",
+        "tomorrow 6 AM",
+        "✅ Trial booked! Tomorrow 6 AM. Bring a water bottle. 💪"
+      ]
+    },
+    "coaching": {
+      "business": "Bright Coaching",
+      "tag": "Coaching / Tuition",
+      "badge": "Admission",
+      "lines": [
+        "What's the fee for class 10?",
+        "📚 Class 10 — ₹3,500/month\nOR ₹35,000 full year (save ₹7k)\n📅 Demo class: Sat 10 AM",
+        "book demo",
+        "Send your name and phone to confirm",
+        "Rohan, 9876543210",
+        "✅ Saturday 10 AM booked, Rohan. Address: Bright Coaching, 2nd Floor, Civil Lines"
+      ]
+    },
+    "clinic": {
+      "business": "Dr. Verma Clinic",
+      "tag": "Clinic / Doctor",
+      "badge": "Appointment",
+      "lines": [
+        "Is the doctor available today?",
+        "🩺 Dr. Verma: Mon-Sat\n🕥 10 AM - 7 PM\nToday's slots: 3 PM, 5 PM, 6:30 PM",
+        "I want to book 5 PM",
+        "Send patient name + age",
+        "Priya, 28",
+        "✅ 5 PM today for Priya. Token #14\n📍 Verma Clinic, Sector 17"
+      ]
+    }
+  },
+  "hook": {
+    "badge": "Real problem",
+    "title_a": "What happens at night",
+    "subtitle": "Same shop · same customers · different outcome.",
+    "without_label": "Without Whatly",
+    "with_label": "With Whatly",
+    "toggle_without": "Without",
+    "toggle_with": "With Whatly",
+    "kirana": {
+      "name": "Kirana",
+      "without": {
+        "badge": "11:42 PM",
+        "headline": "8 customers left tonight",
+        "subhead": "Owner sleeping. Phone vibrating. Nobody replied.",
+        "chats": ["is the shop open?", "got atta bhaiya?", "can I get 2 atta 1 dal?", "no reply… 😞"],
+        "stat_labels": ["Lost orders", "Missed messages", "Replies sent"]
+      },
+      "with": {
+        "badge": "11:42 PM · auto",
+        "headline": "Owner asleep. Bot runs the shop.",
+        "subhead": "Every message answered. Orders queued for morning.",
+        "chats": ["is the shop open?", "got atta bhaiya?", "can I get 2 atta 1 dal?", "thanks! I'll come tomorrow morning"],
+        "stat_labels": ["Recovered", "Replied 24×7", "Reply time"]
+      }
+    },
+    "salon": {
+      "name": "Salon",
+      "without": {
+        "badge": "Sunday closed",
+        "headline": "Sunday: closed. Bookings? Also closed.",
+        "subhead": "8 brides messaged. None heard back. Booked elsewhere.",
+        "chats": ["want to book a haircut today", "facial slot free?", "have a wedding tonight 😩", "I'll try somewhere else"],
+        "stat_labels": ["Lost bookings", "Brides went away", "Confirmations"]
+      },
+      "with": {
+        "badge": "Sunday · auto-booked",
+        "headline": "Sunday off, but appointments still roll in.",
+        "subhead": "Bot books slots from your sheet. Monday — calendar full.",
+        "chats": ["want to book a haircut today", "facial slot free?", "have a wedding tonight 😩", "✅ booked! check 7 PM"],
+        "stat_labels": ["Captured", "Booked", "Lost to rivals"]
+      }
+    },
+    "restaurant": {
+      "name": "Restaurant",
+      "without": {
+        "badge": "Lunch rush",
+        "headline": "Kitchen + phone + delivery — something slips",
+        "subhead": "Owner cooking. WhatsApp piling up. Orders go to Swiggy.",
+        "chats": ["send the menu bhaiya", "delivery in 1 hr?", "where are you?", "🤷 fine, Swiggy then"],
+        "stat_labels": ["Swiggy commission", "Direct orders lost", "Reply lag"]
+      },
+      "with": {
+        "badge": "Lunch rush · auto",
+        "headline": "Cook the food. Bot handles the rest.",
+        "subhead": "Menu auto-sent. UPI link auto-sent. ETA auto-tracked.",
+        "chats": ["send the menu bhaiya", "2 paneer butter, 4 roti", "paid ✓", "✅ ETA 30 min"],
+        "stat_labels": ["Aggregator cut", "Direct + paid", "Reply"]
+      }
+    }
   },
   "lang_picker": {
     "title": "Choose your language",
