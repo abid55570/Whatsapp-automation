@@ -118,12 +118,19 @@ services:
       dockerfile: Dockerfile
     container_name: wa_frontend
     restart: unless-stopped
+    # Dev: run as root so Next.js can write the /app/.next anonymous volume
+    # (created root-owned; the image's `node` user otherwise hits EACCES).
+    user: root
     ports:
       - "3000:3000"
     env_file:
       - .env
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:8000
+      # Bind-mount file events don't propagate from Windows host into the
+      # container, so Next's dev watcher must poll to detect edits + hot-reload.
+      WATCHPACK_POLLING: "true"
+      CHOKIDAR_USEPOLLING: "true"
     volumes:
       - ./frontend:/app
       - /app/node_modules

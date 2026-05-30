@@ -7,6 +7,9 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false, // don't leak X-Powered-By: Next.js
   compress: true,
+  // Transpile the three.js ecosystem so React internals resolve to a single
+  // instance (fixes @react-three/fiber "ReactCurrentOwner" error in App Router).
+  transpilePackages: ["three", "@react-three/fiber", "@react-three/drei"],
   experimental: {
     optimizePackageImports: [
       "lucide-react",
